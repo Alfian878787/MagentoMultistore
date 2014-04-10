@@ -6,6 +6,11 @@
             </Solvingmagento_OrderExport>
         </modules>
         <global>
+            <models>
+                <solvingmagento_orderexport>
+                    <class>Solvingmagento_OrderExport_Model</class>
+                </solvingmagento_orderexport>
+            </models>
             <helpers>
                 <orderexport>
                     <class>Solvingmagento_OrderExport_Helper</class>
