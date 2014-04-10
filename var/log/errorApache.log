@@ -3,3 +3,5 @@
 [Thu Apr 10 14:20:15 2014] [error] [client 127.0.0.1] client denied by server configuration: C:/Zend/Apache2/htdocs/learning2/app/etc/local.xml
 [Thu Apr 10 14:20:16 2014] [error] [client 127.0.0.1] client denied by server configuration: C:/Zend/Apache2/htdocs/learning2/app/etc/local.xml
 [Thu Apr 10 14:23:05 2014] [error] [client 127.0.0.1] client denied by server configuration: C:/Zend/Apache2/htdocs/learning2/app/etc/local.xml
+[Thu Apr 10 14:34:43 2014] [error] [client 127.0.0.1] client denied by server configuration: C:/Zend/Apache2/htdocs/learning2/app/etc/local.xml
+[Thu Apr 10 14:34:47 2014] [error] [client 127.0.0.1] client denied by server configuration: C:/Zend/Apache2/htdocs/learning2/app/etc/local.xml
