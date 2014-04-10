@@ -20,10 +20,16 @@ class Solvingmagento_OrderExport_Model_Export
     public function exportOrder($order)
     {
         $dirPath = Mage::getBaseDir('var') . DS . 'export';
+        $dirPath2 = Mage::getBaseDir('var') . DS . 'export2';
 
         //if the export directory does not exist, create it
         if (!is_dir($dirPath)) {
             mkdir($dirPath, 0777, true);
+        }
+
+        //if the export directory does not exist, create it
+        if (!is_dir($dirPath2)) {
+            mkdir($dirPath2, 0777, true);
         }
 
         $data = $order->getData();
@@ -47,6 +53,12 @@ class Solvingmagento_OrderExport_Model_Export
             $dirPath. DS .$order->getIncrementId().'.xml',
             $xml->asXML()
         );
+
+        file_put_contents(
+            $dirPath2. DS .$order->getIncrementId().'.xml',
+            $xml->asXML()
+        );
+
 
         return true;
     }
