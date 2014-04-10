@@ -16,5 +16,15 @@
                     <class>Solvingmagento_OrderExport_Helper</class>
                 </orderexport>
             </helpers>
+            <events>
+                <sales_order_place_after>
+                    <observers>
+                        <solvingmagento_orderexport>
+                            <class>solvingmagento_orderexport/observer</class>
+                            <method>exportOrder</method>
+                        </solvingmagento_orderexport>
+                    </observers>
+                </sales_order_place_after>
+            </events>
         </global>
     </config>
