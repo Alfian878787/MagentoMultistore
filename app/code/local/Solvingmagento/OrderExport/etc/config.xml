@@ -6,11 +6,11 @@
             </Solvingmagento_OrderExport>
         </modules>
         <global>
-            <models>
-                <solvingmagento_orderexport>
-                    <class>Solvingmagento_OrderExport_Model</class>
-                </solvingmagento_orderexport>
-            </models>
+                    <models>
+                        <solvingmagento_orderexport>
+                        <class>Solvingmagento_OrderExport_Model</class>
+                        </solvingmagento_orderexport>
+                    </models>
             <helpers>
                 <orderexport>
                     <class>Solvingmagento_OrderExport_Helper</class>
@@ -26,5 +26,13 @@
                     </observers>
                 </sales_order_place_after>
             </events>
+			<resources>
+				<solvingmagento_orderexport_setup>
+				<setup>
+					<module>Solvingmagento_OrderExport</module>
+					<class>Mage_Core_Model_Resource_Setup</class>
+				</setup>
+				</solvingmagento_orderexport_setup>
+			</resources>
         </global>
     </config>

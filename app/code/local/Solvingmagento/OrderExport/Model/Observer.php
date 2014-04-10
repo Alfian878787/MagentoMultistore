@@ -19,10 +19,8 @@ class Solvingmagento_OrderExport_Model_Observer
     {
         $order = $observer->getEvent()->getOrder();
 
-        Mage::getModel('solvingmagento_orderexport/export')
-            ->exportOrder($order);
+        Mage::getModel('solvingmagento_orderexport/export')->exportOrder($order);
 
         return true;
-
     }
 }
