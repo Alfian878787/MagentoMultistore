@@ -37,6 +37,10 @@ Whoops, it looks like you have an invalid PHP version.</h3></div><p>Magento supp
 /**
  * Error reporting
  */
+ini_set('display_errors', 1);
+ini_set('memory_limit', '512M');
+ini_set('error_log','var/log/errorPhp.log');
+
 error_reporting(E_ALL | E_STRICT);
 
 /**
