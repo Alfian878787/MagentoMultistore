@@ -1,2 +1,6 @@
-.idea
-var
+.idea\*
+.idea/*
+var\*
+var/*
+media\*
+media/*
