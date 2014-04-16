@@ -63,4 +63,10 @@
             </adminhtml>
         </routers>
     </admin>
+    <layout>
+        <default>
+            <remove name="notification_security" />
+            <remove name="notification_survey" />
+        </default>
+    </layout>
 </config>
