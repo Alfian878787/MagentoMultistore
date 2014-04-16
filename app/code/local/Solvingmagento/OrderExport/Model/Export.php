@@ -22,7 +22,8 @@ class Solvingmagento_OrderExport_Model_Export
         $StoreName = $order->getStoreName();
         $StoreName = preg_replace('/\s+/', '', $StoreName);
         $StoreName = str_replace('_', '', $StoreName);
-        Mage::log("##  $StoreName " );
+        $StoreName = substr($StoreName, 0, 6);
+//        Mage::log("##  $StoreName " );
         $dirPath = Mage::getBaseDir('var') . DS . 'order_xml' . DS . $StoreName;
 
 
@@ -32,6 +33,7 @@ class Solvingmagento_OrderExport_Model_Export
         }
 
         $data = $order->getData();
+//        Mage::log( var_dump($data) );
 
         $xml = new SimpleXMLElement('<root/>');
 
@@ -41,13 +43,12 @@ class Solvingmagento_OrderExport_Model_Export
                     $value = $value->getData();
                 }
 
-                #Aj
-                Mage::log(print_r($value) );
-
                 if (is_array($value)) {
                     array_walk_recursive($value, $callback);
                 }
-                $xml->addChild($key, $value);
+                Mage::log( $key, serialize($value) );
+//                $StoreView = ($key == 'created_in') ? $value : 'UNKNOWN';
+                $xml->addChild($key, (string)$value);
             };
 
         array_walk_recursive($data, $callback);
