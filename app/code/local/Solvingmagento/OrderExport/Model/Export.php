@@ -19,7 +19,8 @@ class Solvingmagento_OrderExport_Model_Export
      */
     public function exportOrder($order)
     {
-        $StoreName = substr(str_replace('_', '', preg_replace('/\s+/', '',  $order->getStoreName())), 0, 6);
+        $StoreName = str_replace('_', '', preg_replace('/\s+/', '',  $order->getStoreName()));
+        $StoreName = substr($StoreName, 0, 6);
 //        $StoreView = str_replace('_', '', preg_replace('/\s+/', '', $order->getCustomer()->getCreatedIn()));
 //        Mage::log("##  $StoreView ",null,'MyArray.log' );
         $dirPath = Mage::getBaseDir('var') . DS . 'order_xml' . DS . $StoreName;
