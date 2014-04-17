@@ -44,7 +44,7 @@ class Solvingmagento_OrderExport_Model_Export
                 if (is_array($value)) {
                     array_walk_recursive($value, $callback);
                 }
-                Mage::log( $key, serialize($value) );
+//                Mage::log( $key, serialize($value) );
                 $xml->addChild($key, (string)$value);
             };
 
