@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<RymanGroup_StoreLocator>
+			<version>0.0.1</version>
+		</RymanGroup_StoreLocator>
+	</modules>
+	
+	 <frontend>
+        <routers>
+            <storelocator>
+                <use>standard</use>
+                <args>
+                    <module>RymanGroup_StoreLocator</module>
+                    <frontName>storelocator</frontName>
+                </args>
+            </storelocator>
+        </routers>
+        <layout>
+    		<updates>
+	    		<storelocator>
+	    			<file>storelocator.xml</file>
+	    		</storelocator>
+	    	</updates>
+    	</layout>
+	</frontend>
+</config>
