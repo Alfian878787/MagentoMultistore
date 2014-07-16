@@ -1,0 +1,11 @@
+2014-07-16T15:12:12+00:00 ERR (3): Notice: Undefined variable: address  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\index.phtml on line 17
+2014-07-16T15:12:33+00:00 ERR (3): Notice: Undefined variable: address  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\index.phtml on line 17
+2014-07-16T15:12:55+00:00 ERR (3): Notice: Undefined variable: address  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\index.phtml on line 17
+2014-07-16T15:13:13+00:00 ERR (3): Notice: Undefined variable: address  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\index.phtml on line 17
+2014-07-16T15:16:03+00:00 ERR (3): Notice: Undefined variable: query  in C:\Zend\Apache2\htdocs\learning2\app\code\local\RymanGroup\StoreLocator\Block\Stores.php on line 71
+2014-07-16T15:30:02+00:00 ERR (3): Warning: Invalid argument supplied for foreach()  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\index.phtml on line 24
+2014-07-16T15:30:02+00:00 ERR (3): Warning: Invalid argument supplied for foreach()  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\index.phtml on line 46
+2014-07-16T15:30:59+00:00 ERR (3): Warning: Invalid argument supplied for foreach()  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\index.phtml on line 24
+2014-07-16T15:30:59+00:00 ERR (3): Warning: Invalid argument supplied for foreach()  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\index.phtml on line 46
+2014-07-16T15:32:11+00:00 ERR (3): Warning: Invalid argument supplied for foreach()  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\index.phtml on line 24
+2014-07-16T15:32:11+00:00 ERR (3): Warning: Invalid argument supplied for foreach()  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\index.phtml on line 46

@@ -5,7 +5,15 @@
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
 		<reference name="content">
-			<block type="core/template" name="storelocator_index_index" template="storelocator/index/index.phtml"/>
+			<block type="storelocator/stores" name="storelocator_index_index" template="storelocator/index/index.phtml"/>
 		</reference>
 	</storelocator_index_index>
+	<storelocator_index_details>
+		<reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+		<reference name="content">
+			<block type="storelocator/stores" name="storelocator_index_details" template="storelocator/index/details.phtml"/>
+		</reference>
+	</storelocator_index_details>
 </layout>

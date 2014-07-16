@@ -5,7 +5,25 @@
 			<version>0.0.1</version>
 		</RymanGroup_StoreLocator>
 	</modules>
-	
+    <global>
+        <blocks>
+            <storelocator>
+                <class>RymanGroup_StoreLocator_Block</class>
+            </storelocator>
+        </blocks>
+        <resources>
+            <RymanGroup_StoreLocator_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </RymanGroup_StoreLocator_write>
+            <RymanGroup_StoreLocator_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </RymanGroup_StoreLocator_read>
+        </resources>
+    </global>
 	 <frontend>
         <routers>
             <storelocator>
