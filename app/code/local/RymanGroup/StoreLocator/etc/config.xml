@@ -1,29 +1,118 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <config>
-	<modules>
-		<RymanGroup_StoreLocator>
-			<version>0.0.1</version>
-		</RymanGroup_StoreLocator>
-	</modules>
-    <global>
-        <blocks>
-            <storelocator>
-                <class>RymanGroup_StoreLocator_Block</class>
-            </storelocator>
-        </blocks>
-        <resources>
-            <RymanGroup_StoreLocator_write>
-                <connection>
-                    <use>core_write</use>
-                </connection>
-            </RymanGroup_StoreLocator_write>
-            <RymanGroup_StoreLocator_read>
-                <connection>
-                    <use>core_read</use>
-                </connection>
-            </RymanGroup_StoreLocator_read>
-        </resources>
-    </global>
+  <modules>
+    <RymanGroup_StoreLocator>
+      <version>0.1.0</version>
+    </RymanGroup_StoreLocator>
+  </modules>
+  <global>
+    <helpers>
+      <storelocator>
+        <class>RymanGroup_StoreLocator_Helper</class>
+      </storelocator>
+    </helpers>
+	<blocks>
+	  <storelocator>
+		<class>RymanGroup_StoreLocator_Block</class>
+	  </storelocator>
+	</blocks>
+	<models>
+	  <storelocator>
+		<class>RymanGroup_StoreLocator_Model</class>
+		<resourceModel>storelocator_mysql4</resourceModel>
+	  </storelocator>
+	  <storelocator_mysql4>
+		<class>RymanGroup_StoreLocator_Model_Mysql4</class>
+		<entities>		  
+			  <storelocator>
+				<table>storelocator_branches</table>
+			  </storelocator>
+        </entities>
+	  </storelocator_mysql4>
+	</models>
+	<resources>
+	  <storelocator_setup>
+		<setup>
+		  <module>RymanGroup_StoreLocator</module>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </storelocator_setup>
+	  <storelocator_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </storelocator_write>
+	  <storelocator_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </storelocator_read>
+	</resources>
+  </global>
+  <admin>
+	<routers>
+	  <storelocator>
+	    <use>admin</use>
+		<args>
+		  <module>RymanGroup_StoreLocator</module>
+		  <frontName>storelocator</frontName>
+		</args>
+	  </storelocator>
+	</routers>
+  </admin>
+  <adminhtml>
+	<menu>
+	  <storelocator module="storelocator">
+		<title>StoreLocator</title>
+		<sort_order>100</sort_order>
+		<children>
+		  <storelocatorbackend module="storelocator">
+			<title>Store Locator </title>
+			<sort_order>0</sort_order>
+			<action>storelocator/adminhtml_storelocatorbackend</action>
+		  </storelocatorbackend>
+		  <storelocator module="storelocator">
+		    <title>Manage Storelocator</title>
+			<sort_order>0</sort_order>
+			<action>storelocator/adminhtml_storelocator</action>
+		  </storelocator>
+		</children>
+	  </storelocator>
+	</menu>
+	<acl>
+	  <resources>
+		<all>
+		  <title>Allow Everything</title>
+		</all>
+		<admin>
+		  <children>
+			<storelocator translate="title" module="storelocator">
+			  <title>StoreLocator</title>
+			  <sort_order>1000</sort_order>
+			  <children>
+		  <storelocatorbackend translate="title">
+			<title>Store Locator </title>
+		  </storelocatorbackend>
+		  <storelocator translate="title">
+			<title>Manage Storelocator</title>
+			<sort_order>0</sort_order>
+		  </storelocator>
+			  </children>
+			</storelocator>
+		  </children>
+		</admin>
+	  </resources>
+	</acl>
+	<layout>
+	  <updates>
+		<storelocator>
+		  <file>storelocator.xml</file>
+		</storelocator>
+	  </updates>
+	</layout>
+  </adminhtml>
 	 <frontend>
         <routers>
             <storelocator>
@@ -42,4 +131,4 @@
 	    	</updates>
     	</layout>
 	</frontend>
-</config>
+</config> 

@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
 <config>
-    <modules>
-        <RymanGroup_StoreLocator>
-            <active>true</active>
-            <codePool>local</codePool>
-        </RymanGroup_StoreLocator>
-    </modules>
+  <modules>
+    <RymanGroup_StoreLocator>
+      <active>true</active>
+      <codePool>local</codePool>
+      <version>0.1.0</version>
+    </RymanGroup_StoreLocator>
+  </modules>
 </config>

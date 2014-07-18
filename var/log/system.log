@@ -9,3 +9,13 @@
 2014-07-16T15:30:59+00:00 ERR (3): Warning: Invalid argument supplied for foreach()  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\index.phtml on line 46
 2014-07-16T15:32:11+00:00 ERR (3): Warning: Invalid argument supplied for foreach()  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\index.phtml on line 24
 2014-07-16T15:32:11+00:00 ERR (3): Warning: Invalid argument supplied for foreach()  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\index.phtml on line 46
+2014-07-18T14:29:21+00:00 ERR (3): Notice: Trying to get property of non-object  in C:\Zend\Apache2\htdocs\learning2\app\code\local\RymanGroup\StoreLocator\Block\Stores.php on line 62
+2014-07-18T14:29:21+00:00 ERR (3): Notice: Trying to get property of non-object  in C:\Zend\Apache2\htdocs\learning2\app\code\local\RymanGroup\StoreLocator\Block\Stores.php on line 62
+2014-07-18T14:29:21+00:00 ERR (3): Notice: Trying to get property of non-object  in C:\Zend\Apache2\htdocs\learning2\app\code\local\RymanGroup\StoreLocator\Block\Stores.php on line 62
+2014-07-18T14:29:21+00:00 ERR (3): Notice: Trying to get property of non-object  in C:\Zend\Apache2\htdocs\learning2\app\code\local\RymanGroup\StoreLocator\Block\Stores.php on line 62
+2014-07-18T14:29:21+00:00 ERR (3): Notice: Trying to get property of non-object  in C:\Zend\Apache2\htdocs\learning2\app\code\local\RymanGroup\StoreLocator\Block\Stores.php on line 62
+2014-07-18T14:29:21+00:00 ERR (3): Notice: Trying to get property of non-object  in C:\Zend\Apache2\htdocs\learning2\app\code\local\RymanGroup\StoreLocator\Block\Stores.php on line 63
+2014-07-18T14:29:21+00:00 ERR (3): Notice: Trying to get property of non-object  in C:\Zend\Apache2\htdocs\learning2\app\code\local\RymanGroup\StoreLocator\Block\Stores.php on line 63
+2014-07-18T14:29:21+00:00 ERR (3): Notice: Trying to get property of non-object  in C:\Zend\Apache2\htdocs\learning2\app\code\local\RymanGroup\StoreLocator\Block\Stores.php on line 63
+2014-07-18T14:29:21+00:00 ERR (3): Notice: Trying to get property of non-object  in C:\Zend\Apache2\htdocs\learning2\app\code\local\RymanGroup\StoreLocator\Block\Stores.php on line 63
+2014-07-18T14:29:21+00:00 ERR (3): Notice: Trying to get property of non-object  in C:\Zend\Apache2\htdocs\learning2\app\code\local\RymanGroup\StoreLocator\Block\Stores.php on line 63
