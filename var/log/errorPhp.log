@@ -2136,3 +2136,4 @@
 [16-Jul-2014 15:01:03 UTC] PHP Parse error:  syntax error, unexpected T_ECHO in C:\Zend\Apache2\htdocs\learning2\app\code\local\RymanGroup\StoreLocator\Block\Stores.php on line 36
 [18-Jul-2014 16:38:47 UTC] PHP Fatal error:  Class 'RymanGroup_StoreLocator_Block_Adminhtml_Storelocator_Edit_Tab_Hoursopening' not found in C:\Zend\Apache2\htdocs\learning2\app\code\core\Mage\Core\Model\Layout.php on line 491
 [21-Jul-2014 10:56:57 UTC] PHP Parse error:  syntax error, unexpected ')' in C:\Zend\Apache2\htdocs\learning2\app\code\local\RymanGroup\StoreLocator\Block\Adminhtml\Storelocator\Edit\Tabs.php on line 42
+[21-Jul-2014 12:30:28 UTC] PHP Fatal error:  Cannot redeclare class RymanGroup_StoreLocator_Block_Adminhtml_Storelocator_Edit_Tab_Form in C:\Zend\Apache2\htdocs\learning2\app\code\local\RymanGroup\StoreLocator\Block\Adminhtml\Storelocator\Edit\Tab\Map.php on line 0

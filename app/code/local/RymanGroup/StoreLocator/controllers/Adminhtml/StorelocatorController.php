@@ -75,6 +75,8 @@ class RymanGroup_StoreLocator_Adminhtml_StorelocatorController extends Mage_Admi
 
 			$post_data=$this->getRequest()->getPost();
 
+            echo '<pre>';
+            print_r($post_data);
 
 				if ($post_data) {
 
