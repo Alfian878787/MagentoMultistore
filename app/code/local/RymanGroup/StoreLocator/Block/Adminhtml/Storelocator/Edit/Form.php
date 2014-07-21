@@ -15,3 +15,6 @@ class RymanGroup_StoreLocator_Block_Adminhtml_Storelocator_Edit_Form extends Mag
 				return parent::_prepareForm();
 		}
 }
+
+
+//storelocator/adminhtml_storelocator_edit_tab_form

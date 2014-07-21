@@ -2134,3 +2134,5 @@
 [16-Jul-2014 14:03:09 UTC] PHP Parse error:  syntax error, unexpected ';' in C:\Zend\Apache2\htdocs\learning2\app\code\local\RymanGroup\StoreLocator\Block\Stores.php on line 48
 [16-Jul-2014 14:14:30 UTC] PHP Parse error:  syntax error, unexpected T_ENCAPSED_AND_WHITESPACE, expecting T_STRING or T_VARIABLE or T_NUM_STRING in C:\Zend\Apache2\htdocs\learning2\app\code\local\RymanGroup\StoreLocator\Block\Stores.php on line 34
 [16-Jul-2014 15:01:03 UTC] PHP Parse error:  syntax error, unexpected T_ECHO in C:\Zend\Apache2\htdocs\learning2\app\code\local\RymanGroup\StoreLocator\Block\Stores.php on line 36
+[18-Jul-2014 16:38:47 UTC] PHP Fatal error:  Class 'RymanGroup_StoreLocator_Block_Adminhtml_Storelocator_Edit_Tab_Hoursopening' not found in C:\Zend\Apache2\htdocs\learning2\app\code\core\Mage\Core\Model\Layout.php on line 491
+[21-Jul-2014 10:56:57 UTC] PHP Parse error:  syntax error, unexpected ')' in C:\Zend\Apache2\htdocs\learning2\app\code\local\RymanGroup\StoreLocator\Block\Adminhtml\Storelocator\Edit\Tabs.php on line 42

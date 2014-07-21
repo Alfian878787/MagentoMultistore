@@ -79,9 +79,6 @@ class RymanGroup_StoreLocator_Adminhtml_StorelocatorController extends Mage_Admi
 				if ($post_data) {
 
 					try {
-
-						
-
 						$model = Mage::getModel("storelocator/storelocator")
 						->addData($post_data)
 						->setId($this->getRequest()->getParam("id"))

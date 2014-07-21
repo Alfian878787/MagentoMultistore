@@ -6,7 +6,7 @@ class RymanGroup_StoreLocator_Block_Adminhtml_Storelocator_Edit_Tab_Form extends
 
 				$form = new Varien_Data_Form();
 				$this->setForm($form);
-				$fieldset = $form->addFieldset("storelocator_form", array("legend"=>Mage::helper("storelocator")->__("Item information")));
+				$fieldset = $form->addFieldset("storelocator_form", array("legend"=>Mage::helper("storelocator")->__("Store information")));
 
 				
 						$fieldset->addField("store_code", "text", array(
