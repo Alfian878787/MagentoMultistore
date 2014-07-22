@@ -43,15 +43,19 @@ $res = $this->getStores($address);
             ,mapProp);
 
         <?
-         foreach ( $res as $row){ $name = $row['unique_name'] ?>
-        google.maps.event.addListener(<?=$name?>,'click',function() {
-            map.setZoom(15);
+         foreach ( $res as $row){ ?>
+        <? $name = $row['unique_name'];
+        $map_branch_img = $row['map_branch_img'];
+        $map_zoom_list_page = $row['map_zoom_list_page'];
+        $address = $row['address1'].', '.$row['city'];?>
+        google.maps.event.addListener( <?=$name?>,'click',function() {
+            map.setZoom(<?=$map_zoom_list_page?>);
             map.setCenter(<?=$name?>.getPosition());
             if (infowindow) {
                 infowindow.close();
             }
             infowindow = new google.maps.InfoWindow();
-            infowindow.setContent('<img src="http://www.retail-week.com/pictures/636xAny/8/6/4/1259864_Ryman_2.jpg" width="300px"/> <br />this store is ' + '<?=$name?>');
+            infowindow.setContent('<img src="<?=$map_branch_img?>" width="300px"/> <br />this store is:: ' + '<?=$address?>');
             infowindow.open(map,<?=$name?>);
         });
         <?=$name?>.setMap(map);
@@ -154,17 +158,17 @@ $res = $this->getStores($address);
         <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. </p>
     </div>
 
- <?if(empty($res)){
-     echo '<h1> Could not locate any store for GU21 5ED </h1>';
- }else {
-    foreach ( $res as $row){ $name = $row['unique_name']; $id = $row['id'];?>
-    <div class="storesList">
-        <h3> <?=$row['branch_name']?> </h3>
-        <p> Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. </p>
-        <div class="viewOnMap"  > <a href="#" onclick="showMarker(<?=$name?>)" > View on map </a></div>
-        <div class="goToStore"  > <a href='<?= Mage::getUrl("storelocator/index/details/", array('id' => $id)) ?>'>  Go to Store </a></div>
-    </div>
-    <?}}?>
+    <?if(empty($res)){
+        echo '<h1> Could not locate any store for GU21 5ED </h1>';
+    }else {
+        foreach ( $res as $row){ $name = $row['unique_name']; $id = $row['id'];?>
+            <div class="storesList">
+                <h3> <?=$row['branch_name']?> </h3>
+                <p> Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. </p>
+                <div class="viewOnMap"  > <a href="#" onclick="showMarker(<?=$name?>)" > View on map </a></div>
+                <div class="goToStore"  > <a href='<?= Mage::getUrl("storelocator/index/details/", array('id' => $id)) ?>'>  Go to Store </a></div>
+            </div>
+        <?}}?>
 
 </div>
 </body>
