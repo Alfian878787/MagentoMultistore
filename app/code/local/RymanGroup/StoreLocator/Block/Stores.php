@@ -22,33 +22,57 @@
 
 class RymanGroup_StoreLocator_Block_Stores extends Mage_Core_Block_Template
 {
+    /*
+     * Enable disable test mode
+     *
+     * TRUE     Log data
+     * FALSE    Does not lod data
+     * @access  private
+     */
+    private $_testMode = TRUE;
+
+    /*
+     * File to store logs
+     *
+     * @datatype    string
+     * @access      private
+     */
+    private $_logFile = 'storeLocator.log';
+
     public function getStores($address=NULL) {
         $resource = Mage::getSingleton('core/resource');
         $readConnection = $resource->getConnection('core_read');
 
+        $address = str_replace(' ', '',$address);
+        $address =($address)? $address : 'Empty Address' ;
+        $this->logData($address, 'Address Check', FALSE);  // DEBUG
+
+
 
         if(empty ($address)){
             $query = 'SELECT * FROM storelocator_branch_list' ;// . $resource->getTableName('catalog/product');
-            Mage::log("\n=======================\n EMPTY Address \n=======================\n", null,'MyArray.log');
             return $readConnection->fetchAll($query);
         }else {
             $center = $this->getLatLng($address);
-            $centerLat = $center['lat']; // 51.677; //
-            $centerLng = $center['lat']; //-0.606; //
-            $withIn = 125;
 
-            $query = "SELECT *, ( 3959 * acos( cos( radians($centerLat) )
-            * cos( radians( lat ) )
-            * cos( radians( lng )
-            - radians($centerLng) )
-            + sin( radians($centerLat) )
-            * sin( radians( lat ) ) ) )
-            AS distance FROM storelocator_branch_list HAVING distance < $withIn ORDER BY distance LIMIT 0 , 2";
+            $centerLat = floatval($center['lat']); // 51.677; //
+            $centerLng = floatval($center['lng']); //-0.606; //
 
-/*            $query = "SELECT *, ( 3959 * acos( cos( radians($centerLat) ) * cos( radians( lat ) )
-            * cos( radians( lng ) - radians($centerLng) ) + sin( radians($centerLat) )
-            * sin( radians( lat ) ) ) )
-            AS distance FROM storelocator_branch_list HAVING distance < $withIn ORDER BY distance LIMIT 0 , 2";*/
+            $this->logData($centerLat.'/'.$centerLng, 'Center Check ', FALSE);  // DEBUG
+
+            $withIn = 300;
+            $mile = TRUE;
+            $maxStore = 20;
+            $radius = ($mile) ? 3959 : 6371;
+
+
+            $query = "SELECT *, ( $radius * acos(
+cos( radians($centerLat) )
+* cos( radians( lat ) )
+* cos( radians( lng ) - radians($centerLng) )
++ sin( radians($centerLat) )
+* sin( radians( lat ) ) ) ) AS distance FROM
+storelocator_branch_list HAVING distance < $withIn ORDER BY distance LIMIT 0 , $maxStore";
 
             $result = $readConnection->fetchAll($query);
             return $result;
@@ -56,12 +80,12 @@ class RymanGroup_StoreLocator_Block_Stores extends Mage_Core_Block_Template
     }
 
     public function getLatLng($address){
-        $url ="http://maps.googleapis.com/maps/api/geocode/json?address=".$address."&sensor=false";
+        $url ="http://maps.googleapis.com/maps/api/geocode/json?address=$address&sensor=false";
         $data = @file_get_contents($url);
-        $data = json_decode($data );  //        print_r($data); exit;
+        $data = json_decode($data );
         $center['lat'] = $data->results[0]->geometry->bounds->northeast->lat;
         $center['lng'] = $data->results[0]->geometry->bounds->northeast->lng;
-        Mage::log("\n=======================\n ".print_r($center, true)." \n=======================\n", null,'MyArray.log');
+        $this->logData($center, 'Center', TRUE);  // Debug
         return $center;
     }
 
@@ -97,5 +121,15 @@ class RymanGroup_StoreLocator_Block_Stores extends Mage_Core_Block_Template
         $hour   = ($hour < 10 ) ? '0'.$hour : $hour;
         $mn     = ($mn < 10 ) ? '0'.$mn : $mn;
         return $hour.':'.$mn.$ampm;
+    }
+
+    public function logData($data, $name='DATA', $array=TRUE){
+        if($this->_testMode == FALSE) {return FALSE;}
+        $log  = "\n===================Begaining of $name ========================\n";
+        $log .= ($array) ? print_r($data, true) : $data;
+        $log .= "\n===================      End of $name ========================\n";
+        Mage::log($log, null,$this->_logFile);
+
+        return TRUE;
     }
 }
