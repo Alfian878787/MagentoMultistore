@@ -11,10 +11,19 @@
 
 <body>
 <?
-echo $address  = $this->getRequest()->getPost('address');
-//echo Mage::getSingleton('core/session')->getMySessionVariable();
-//exit;
-$res = $this->getStores($address);
+$address  = $this->getRequest()->getPost('address');
+if (empty($address)){
+    $initZoom       = 6;
+    $centerLat      = 53.089362;
+    $centerLng      = -4.852386;
+    $res            = $this->getAllStores();
+}else{
+    $initZoom       = 9;
+    $center         = $this->getCenter($address);
+    $centerLat      = floatval($center['lat']); // 51.677; //
+    $centerLng      = floatval($center['lng']); //-0.606; //
+    $res            = $this->getStoresLatLng($centerLat,$centerLng);
+}
 ?>
 
 
@@ -30,12 +39,12 @@ $res = $this->getStores($address);
     function initialize()
     {
 
-        var mapCenter = new google.maps.LatLng(53.089362, -4.852386);
+        var mapCenter = new google.maps.LatLng(<?=$centerLat?>, <?=$centerLng?> );
         var infowindow = null;
 
         var mapProp = {
             center:mapCenter,
-            zoom:6,
+            zoom:<?=$initZoom?>,
             mapTypeId:google.maps.MapTypeId.ROADMAP
         };
 
@@ -164,7 +173,7 @@ $res = $this->getStores($address);
         foreach ( $res as $row){ $name = $row['unique_name']; $id = $row['id'];?>
             <div class="storesList">
                 <h3> <?=$row['branch_name']?> </h3>
-                <p> Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. </p>
+                <p> <b> <?=$row['unique_name']?> </b>  Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. </p>
                 <div class="viewOnMap"  > <a href="#" onclick="showMarker(<?=$name?>)" > View on map </a></div>
                 <div class="goToStore"  > <a href='<?= Mage::getUrl("storelocator/index/details/", array('id' => $id)) ?>'>  Go to Store </a></div>
             </div>

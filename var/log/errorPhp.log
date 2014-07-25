@@ -2134,3 +2134,4 @@
 [16-Jul-2014 14:03:09 UTC] PHP Parse error:  syntax error, unexpected ';' in C:\Zend\Apache2\htdocs\learning2\app\code\local\RymanGroup\StoreLocator\Block\Stores.php on line 48
 [16-Jul-2014 14:14:30 UTC] PHP Parse error:  syntax error, unexpected T_ENCAPSED_AND_WHITESPACE, expecting T_STRING or T_VARIABLE or T_NUM_STRING in C:\Zend\Apache2\htdocs\learning2\app\code\local\RymanGroup\StoreLocator\Block\Stores.php on line 34
 [16-Jul-2014 15:01:03 UTC] PHP Parse error:  syntax error, unexpected T_ECHO in C:\Zend\Apache2\htdocs\learning2\app\code\local\RymanGroup\StoreLocator\Block\Stores.php on line 36
+[25-Jul-2014 09:24:07 UTC] PHP Fatal error:  Call to undefined function srt_replace() in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\index.phtml on line 15

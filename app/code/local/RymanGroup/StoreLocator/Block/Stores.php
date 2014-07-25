@@ -39,34 +39,26 @@ class RymanGroup_StoreLocator_Block_Stores extends Mage_Core_Block_Template
      */
     private $_logFile = 'storeLocator.log';
 
-    public function getStores($address=NULL) {
+    public function getAllStores() {
+        $resource = Mage::getSingleton('core/resource');
+        $readConnection = $resource->getConnection('core_read');
+        $query = 'SELECT * FROM storelocator_branch_list' ;// . $resource->getTableName('catalog/product');
+        return $readConnection->fetchAll($query);
+    }
+
+    public function getStoresLatLng($centerLat, $centerLng) {
         $resource = Mage::getSingleton('core/resource');
         $readConnection = $resource->getConnection('core_read');
 
-        $address = str_replace(' ', '',$address);
-        $address =($address)? $address : 'Empty Address' ;
-        $this->logData($address, 'Address Check', FALSE);  // DEBUG
+        $this->logData($centerLat.'/'.$centerLng, 'Center Check ', FALSE);  // DEBUG
+
+        $withIn = 300;
+        $mile = TRUE;
+        $maxStore = 10;
+        $radius = ($mile) ? 3959 : 6371;
 
 
-
-        if(empty ($address)){
-            $query = 'SELECT * FROM storelocator_branch_list' ;// . $resource->getTableName('catalog/product');
-            return $readConnection->fetchAll($query);
-        }else {
-            $center = $this->getLatLng($address);
-
-            $centerLat = floatval($center['lat']); // 51.677; //
-            $centerLng = floatval($center['lng']); //-0.606; //
-
-            $this->logData($centerLat.'/'.$centerLng, 'Center Check ', FALSE);  // DEBUG
-
-            $withIn = 300;
-            $mile = TRUE;
-            $maxStore = 20;
-            $radius = ($mile) ? 3959 : 6371;
-
-
-            $query = "SELECT *, ( $radius * acos(
+        $query = "SELECT *, ( $radius * acos(
 cos( radians($centerLat) )
 * cos( radians( lat ) )
 * cos( radians( lng ) - radians($centerLng) )
@@ -74,18 +66,63 @@ cos( radians($centerLat) )
 * sin( radians( lat ) ) ) ) AS distance FROM
 storelocator_branch_list HAVING distance < $withIn ORDER BY distance LIMIT 0 , $maxStore";
 
-            $result = $readConnection->fetchAll($query);
-            return $result;
-        }
+        $result = $readConnection->fetchAll($query);
+        return $result;
     }
 
-    public function getLatLng($address){
+    /*
+     * get location lat and lng based on town name or postcode
+     *
+     * @pram        string
+     *
+     * @return      array
+     * It may block the url after certen request. This is a google paid service.
+     */
+    public function fetchCoordinates($address){
         $url ="http://maps.googleapis.com/maps/api/geocode/json?address=$address&sensor=false";
         $data = @file_get_contents($url);
         $data = json_decode($data );
         $center['lat'] = $data->results[0]->geometry->bounds->northeast->lat;
         $center['lng'] = $data->results[0]->geometry->bounds->northeast->lng;
         $this->logData($center, 'Center', TRUE);  // Debug
+        return $center;
+    }
+    /*
+     * Get location lat and lng based on town or postcode
+     *
+     * @pram        string
+     *
+     * @return      array
+     * It may block the url after certen request. This is a google paid service.
+     */
+    public function getCenter($add){
+        $address = str_replace(' ','',strtoupper($add));
+        $address = urlencode(preg_replace('#\r|\n#', ' ', $address));
+        $url ="http://maps.googleapis.com/maps/api/geocode/json?address=$address&sensor=false";
+
+        $cinit = curl_init();
+        curl_setopt($cinit, CURLOPT_URL, $url);
+        curl_setopt($cinit, CURLOPT_HEADER,0);
+        curl_setopt($cinit, CURLOPT_USERAGENT, $_SERVER["HTTP_USER_AGENT"]);
+        curl_setopt($cinit, CURLOPT_RETURNTRANSFER, 1);
+        usleep(100000);// sleep for 0.1 sec to try avoid too many requests per second to Google
+        $response = curl_exec($cinit);
+        if (!is_string($response) || empty($response)) {
+            $this->logData($response, 'Response in string or an empty string', TRUE);  // Debug
+            return $this;
+        }
+        $data = json_decode($response);
+        if (strtolower($data->status) != 'ok') {
+            $this->logData($data, 'Status is not OK', TRUE);  // Debug
+            return $this;
+        }
+        $center['lat'] = $data->results[0]->geometry->bounds->northeast->lat;
+        $center['lng'] = $data->results[0]->geometry->bounds->northeast->lng;
+        $this->logData($center, 'Center', TRUE);  // Debug
+
+        $logData = ','.$add .','. $address .','. $center['lat'] .','. $center['lng'];
+        Mage::log($logData, null, 'storeLocatorSearch.csv');  // Tracker
+
         return $center;
     }
 
@@ -123,11 +160,11 @@ storelocator_branch_list HAVING distance < $withIn ORDER BY distance LIMIT 0 , $
         return $hour.':'.$mn.$ampm;
     }
 
-    public function logData($data, $name='DATA', $array=TRUE){
+    public function logData($data, $logName='DATA', $array=TRUE){
         if($this->_testMode == FALSE) {return FALSE;}
-        $log  = "\n===================Begaining of $name ========================\n";
+        $log  = "\n===================Begaining of $logName ========================\n";
         $log .= ($array) ? print_r($data, true) : $data;
-        $log .= "\n===================      End of $name ========================\n";
+        $log .= "\n===================      End of $logName ========================\n";
         Mage::log($log, null,$this->_logFile);
 
         return TRUE;
