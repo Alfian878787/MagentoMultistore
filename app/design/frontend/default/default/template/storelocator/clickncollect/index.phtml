@@ -35,7 +35,8 @@
 <div id="element_to_pop_up">
     <a class="b-close">close<a/>
         <div id="searchInput">
-            <input type="text" name="address" class="searchBox"  placeholder="Enter Town Or Postcode"><select name="options">
+            <input type="text" name="address"  id="centerInput"  placeholder="Enter Town Or Postcode">
+            <select name="options" id="radiusInput" >
                 <option value="10">10mi</option>
                 <option value="20">20mi</option>
                 <option value="30">30mi</option>
@@ -55,6 +56,8 @@
 
 <script>
     var markers = [];
+    var lat = '';
+    var lng = '';
 
     var infowindow =  new google.maps.InfoWindow({
         content: ''
@@ -66,26 +69,49 @@
     }
     function  fetchPlaces() {
         console.log("I am in fetchPlaces");
+        var centerInput =  jQuery("#centerInput").val();
+        var radiusInput =  jQuery("#radiusInput").val();
 
+
+
+        console.log("centerInput :: " + centerInput + " >> radiusInput :: " + radiusInput);
+        jQuery.ajax({
+            url : "http://maps.googleapis.com/maps/api/geocode/json?address=" + centerInput + "&sensor=false",
+            dataType : 'json',
+            success : function(response) {
+                console.log("Success LatLng : " + response.status );
+                if (response.status == 'OK') {
+                    lat = response.results[0].geometry.viewport.northeast.lat;
+                    lng = response.results[0].geometry.viewport.northeast.lng;
+                    console.log("lat :: " + lat + " >> lng :: " + lng);
+                    getMarkers(lat, lng, radiusInput );
+                }
+            }
+        })
+    };
+
+    function getMarkers(lat, lng, radiusInput ) {
+        console.log("lat :: " + lat + " >> lng :: " + lng);
         var mapOptions = {
-            center: new google.maps.LatLng(37.421995, -122.083702),
-            zoom: 11,
+            center: new google.maps.LatLng(lat, lng),
+            zoom: 8,
             mapTypeId: 'roadmap'
         };
         console.log("MapOption init Succeeded");
         var map = new google.maps.Map(document.getElementById("map-content"), mapOptions);
         console.log("map init Succeeded");
 
+        var dataUrl = '/api/data.php?lat=' + lat +'&lng='+ lng +'&w='+radiusInput;
         jQuery.ajax({
-            url : 'http://learning1.lc/api/data.php',
+            url : dataUrl,
             dataType : 'json',
             success : function(response) {
-                console.log("Success " + response.status );
+                console.log("Success StoreData :: " + response.status );
                 if (response.status == 'OK') {
                     places = response.places;
                     // loop through places and add markers
                     for (p in places) {
-                        console.log("Place  " +  places[p].name );
+                        console.log("Place  " +  places[p].name + ' geo0 :: ' + places[p].geo[0] );
                         //create gmap latlng obj
                         tmpLatLng = new google.maps.LatLng( places[p].geo[0], places[p].geo[1]);
                         // make and place map maker.
@@ -94,8 +120,6 @@
                             position: tmpLatLng
                         });
                         bindInfoWindow(marker, map, infowindow, '<div   onclick="loadAddress( \'' + places[p].name  + '\');"> Collect From ' + places[p].name  + '</div>');
-                        // not currently used but good to keep track of markers
-                        markers.push(marker);
                     }
                 }
             }
@@ -108,13 +132,13 @@
             infowindow.setContent(html);
             infowindow.open(map, marker);
         });
-    }
+    };
 
     function loadAddress(name){
         console.log("popUpclosed; I'm in loadAddress");
         $( "#element_to_pop_up" ).bPopup().close();
         $('#content').html('This is the new address ... ' + name );
-    }
+    };
 
 </script>
 
