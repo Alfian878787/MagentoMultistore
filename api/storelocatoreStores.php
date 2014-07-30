@@ -4,7 +4,7 @@
  * User: AMojumder
  * Date: 29/07/14
  * Time: 15:10
- * http://learning1.lc/api/data.php?s=1&w=10&lat=51.823872&lng=-3.019166&lb=0&le=100
+ * http://learning1.lc/api/storelocatoreStores.php?s=1&w=10&lat=51.823872&lng=-3.019166&lb=0&le=100$m=false
  */
 
 header('Content-Type: application/json');
@@ -12,17 +12,17 @@ require("dbConf.php");
 
 
 $data['status']     = 'OK';
-$data['storeCode']  = $storeCode    = ($_GET["s"])      ? $_GET["s"]    : '1';
+$data['storeCode']  = $storeCode    = ($_GET["s"])      ? $_GET["s"]    : '0';
 $data['centerLat']  = $centerLat    = ($_GET["lat"])    ? $_GET["lat"]  : 51.823872;
 $data['centerLng']  = $centerLng    = ($_GET["lng"])    ? $_GET["lng"]  : -3.019166;
-$data['withIn']     = $withIn       = ($_GET["w"])      ? $_GET["w"]    : 100;
+$data['withIn']     = $withIn       = ($_GET["w"])      ? $_GET["w"]    : 1000;
+$data['mile']       = $mile         = ($_GET["m"])      ?  $_GET["m"]   : 'true';
 
 $limitBegain        = ($_GET["lb"])      ? $_GET["lb"]    : 0;
-$limitEnd           = ($_GET["le"])      ? $_GET["le"]    : 10;
+$limitEnd           = ($_GET["le"])      ? $_GET["le"]    : 1000;
 $data['limit']      = array($limitBegain, $limitEnd);
 
-$mile = TRUE;
-$radius = ($mile) ? 3959 : 6371;
+$radius = ($mile == 'true') ? 3959 : 6371;
 
 //$centerLat = 51.823872;
 //$centerLng = -3.019166; //    WHERE store_code='$storeCode'  id, lat, lng, branch_name, unique_name,
