@@ -101,7 +101,8 @@
         var map = new google.maps.Map(document.getElementById("map-content"), mapOptions);
         console.log("map init Succeeded");
 
-        var dataUrl = '/api/data.php?lat=' + lat +'&lng='+ lng +'&w='+radiusInput;
+        var dataUrl = '/api/data.php?s=1&w='+radiusInput+'&lat=' + lat +'&lng='+ lng + '&lb=0&le=200';
+        console.log("dataUrl :: " + dataUrl );
         jQuery.ajax({
             url : dataUrl,
             dataType : 'json',
@@ -109,6 +110,8 @@
                 console.log("Success StoreData :: " + response.status );
                 if (response.status == 'OK') {
                     places = response.places;
+
+                    console.log("Total records :: " + response.records);
                     // loop through places and add markers
                     for (p in places) {
                         console.log("Place  " +  places[p].name + ' geo0 :: ' + places[p].geo[0] );

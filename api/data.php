@@ -4,23 +4,28 @@
  * User: AMojumder
  * Date: 29/07/14
  * Time: 15:10
- * http://learning1.lc/api/data.php?lat=51.823872&lng=-3.019166&w=10
+ * http://learning1.lc/api/data.php?s=1&w=10&lat=51.823872&lng=-3.019166&lb=0&le=100
  */
 
 header('Content-Type: application/json');
 require("dbConf.php");
 
 
-$withIn = $_GET["w"];
+$data['status']     = 'OK';
+$data['storeCode']  = $storeCode    = $_GET["s"];
+$data['centerLat']  = $centerLat    = $_GET["lat"];
+$data['centerLng']  = $centerLng    = $_GET["lng"];
+$data['withIn']     = $withIn       = $_GET["w"];
+
+$limitBegain        = $_GET["lb"];
+$limitEnd           = $_GET["le"];
+$data['limit']      = array($limitBegain, $limitEnd);
+
 $mile = TRUE;
 $radius = ($mile) ? 3959 : 6371;
-$limit = 50;
 
 //$centerLat = 51.823872;
-//$centerLng = -3.019166;
-
-$centerLat = $_GET["lat"];
-$centerLng = $_GET["lng"];
+//$centerLng = -3.019166; //    WHERE store_code='$storeCode'  id, lat, lng, branch_name, unique_name,
 
 $query = "SELECT *, ( $radius * acos(
 cos( radians($centerLat) )
@@ -28,7 +33,7 @@ cos( radians($centerLat) )
 * cos( radians( lng ) - radians($centerLng) )
 + sin( radians($centerLat) )
 * sin( radians( lat ) ) ) ) AS distance FROM
-storelocator_branch_list HAVING distance < $withIn ORDER BY distance LIMIT 0 , $limit";
+storelocator_branch_list HAVING distance < $withIn ORDER BY distance LIMIT $limitBegain , $limitEnd";
 
 try{
     $result = mysqli_query($con, $query );
@@ -45,10 +50,12 @@ while($row = mysqli_fetch_array($result)) {
         'unique_name'   => $row['unique_name'],
         'infowindow'    => 'test data'
     );
+//    $array[] = $row;
 }
 
-$data['status'] = 'OK';
-$data['places'] = $array;
+
+$data['records']    = sizeof($array);
+$data['places']     = $array;
 
 
 echo json_encode($data);
