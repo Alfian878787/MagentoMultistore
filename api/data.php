@@ -12,13 +12,13 @@ require("dbConf.php");
 
 
 $data['status']     = 'OK';
-$data['storeCode']  = $storeCode    = $_GET["s"];
-$data['centerLat']  = $centerLat    = $_GET["lat"];
-$data['centerLng']  = $centerLng    = $_GET["lng"];
-$data['withIn']     = $withIn       = $_GET["w"];
+$data['storeCode']  = $storeCode    = ($_GET["s"])      ? $_GET["s"]    : '1';
+$data['centerLat']  = $centerLat    = ($_GET["lat"])    ? $_GET["lat"]  : 51.823872;
+$data['centerLng']  = $centerLng    = ($_GET["lng"])    ? $_GET["lng"]  : -3.019166;
+$data['withIn']     = $withIn       = ($_GET["w"])      ? $_GET["w"]    : 100;
 
-$limitBegain        = $_GET["lb"];
-$limitEnd           = $_GET["le"];
+$limitBegain        = ($_GET["lb"])      ? $_GET["lb"]    : 0;
+$limitEnd           = ($_GET["le"])      ? $_GET["le"]    : 10;
 $data['limit']      = array($limitBegain, $limitEnd);
 
 $mile = TRUE;
