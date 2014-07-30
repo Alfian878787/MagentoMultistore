@@ -2135,3 +2135,11 @@
 [16-Jul-2014 14:14:30 UTC] PHP Parse error:  syntax error, unexpected T_ENCAPSED_AND_WHITESPACE, expecting T_STRING or T_VARIABLE or T_NUM_STRING in C:\Zend\Apache2\htdocs\learning2\app\code\local\RymanGroup\StoreLocator\Block\Stores.php on line 34
 [16-Jul-2014 15:01:03 UTC] PHP Parse error:  syntax error, unexpected T_ECHO in C:\Zend\Apache2\htdocs\learning2\app\code\local\RymanGroup\StoreLocator\Block\Stores.php on line 36
 [25-Jul-2014 09:24:07 UTC] PHP Fatal error:  Call to undefined function srt_replace() in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\index.phtml on line 15
+[25-Jul-2014 16:27:30 UTC] PHP Parse error:  syntax error, unexpected '<' in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(174) : eval()'d code on line 1
+[25-Jul-2014 16:27:54 UTC] PHP Parse error:  syntax error, unexpected '<' in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(174) : eval()'d code on line 1
+[25-Jul-2014 16:31:20 UTC] PHP Parse error:  syntax error, unexpected '<' in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(174) : eval()'d code on line 1
+[25-Jul-2014 16:32:22 UTC] PHP Parse error:  syntax error, unexpected $end in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(174) : eval()'d code on line 1
+[25-Jul-2014 16:35:00 UTC] PHP Parse error:  syntax error, unexpected '<' in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(174) : eval()'d code on line 1
+[25-Jul-2014 16:41:31 UTC] PHP Parse error:  syntax error, unexpected '>' in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(174) : eval()'d code on line 1
+[30-Jul-2014 10:38:01 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://xmlrpc-test.localhost/index.php/api/index/index/?wsdl=1' : StartTag: invalid element name
+ in C:\Zend\Apache2\htdocs\learning2\lib\Zend\Soap\Server.php on line 762

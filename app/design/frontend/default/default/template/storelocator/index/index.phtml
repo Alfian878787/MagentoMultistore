@@ -25,15 +25,16 @@ if (empty($address)){
     $res            = $this->getStoresLatLng($centerLat,$centerLng);
 }
 ?>
-
-
-
 <script>
     <?
        foreach ( $res as $row){ $name = $row['unique_name'] ?>
+
+    var image = '<?=$row['map_marker_list_page']?>' ; // 'http://www.bluemarketingfirm.com/images/mapmarker_shadow.png';
     var <?=$name?> = new google.maps.LatLng(<?=$row['lat']?>, <?=$row['lng']?>);
     var <?=$name?> = new google.maps.Marker({
         position:<?=$name?>,
+        icon: image,
+        title:"<?=$row['branch_name']?>"
     });
     <?}?>
     function initialize()
@@ -48,26 +49,28 @@ if (empty($address)){
             mapTypeId:google.maps.MapTypeId.ROADMAP
         };
 
-        var map=new google.maps.Map(document.getElementById("googleMap")
-            ,mapProp);
+        var map=new google.maps.Map(document.getElementById("googleMap") ,mapProp);
 
         <?
-         foreach ( $res as $row){ ?>
-        <? $name = $row['unique_name'];
-        $map_branch_img = $row['map_branch_img'];
-        $map_zoom_list_page = $row['map_zoom_list_page'];
-        $address = $row['address1'].', '.$row['city'];?>
-        google.maps.event.addListener( <?=$name?>,'click',function() {
-            map.setZoom(<?=$map_zoom_list_page?>);
-            map.setCenter(<?=$name?>.getPosition());
-            if (infowindow) {
-                infowindow.close();
-            }
-            infowindow = new google.maps.InfoWindow();
-            infowindow.setContent('<img src="<?=$map_branch_img?>" width="300px"/> <br />this store is:: ' + '<?=$address?>');
-            infowindow.open(map,<?=$name?>);
-        });
-        <?=$name?>.setMap(map);
+         foreach ( $res as $row){
+            $name = $row['unique_name'];
+            $map_branch_img_list_page       = $row['map_branch_img_list_page'];
+            $map_zoom_list_page             = $row['map_zoom_list_page'];
+            $address                        = $row['address1'].', '.$row['city'];
+            $url                            = Mage::getUrl("storelocator/index/details/", array('id' => $row['id']));
+            $storeGoUrl                     = '<a href="'.$url.'"> '.$address.' </a>'; ?>
+
+            google.maps.event.addListener( <?=$name?>,'click',function() {
+                map.setZoom(<?=$map_zoom_list_page?>);
+                map.setCenter(<?=$name?>.getPosition());
+                if (infowindow) {
+                    infowindow.close();
+                }
+                infowindow = new google.maps.InfoWindow();
+                infowindow.setContent('<img src="<?=$map_branch_img_list_page?>" width="300px"/> <br /> Visit ' + '<?=$storeGoUrl?>');
+                infowindow.open(map,<?=$name?>);
+            });
+            <?=$name?>.setMap(map);
         <?}?>
     }
 

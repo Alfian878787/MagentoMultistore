@@ -100,6 +100,8 @@ storelocator_branch_list HAVING distance < $withIn ORDER BY distance LIMIT 0 , $
         $address = urlencode(preg_replace('#\r|\n#', ' ', $address));
         $url ="http://maps.googleapis.com/maps/api/geocode/json?address=$address&sensor=false";
 
+
+
         $cinit = curl_init();
         curl_setopt($cinit, CURLOPT_URL, $url);
         curl_setopt($cinit, CURLOPT_HEADER,0);
