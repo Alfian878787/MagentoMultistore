@@ -147,8 +147,12 @@
                 console.log("Success StoreData :: " + response.status );
                 if (response.status == 'OK') {
                     var store = response.store_details[0];
-                    console.log( store.branch_name );
-                    $('#content').html('This is the new address ... ' + store.branch_name );
+                    var address = 'Ryman ' + store.branch_name + '<br />' +
+                        store.address1 + ','   + '<br />' +
+                        store.city + '. ' + store.postcode + '<br />' +
+                        'Tel : ' + store.telephone1 + '<br />' +
+                        'Delivery time : ' + store.delivery_note ;
+                        $('#content').html(address);
                 }
             }
         })
