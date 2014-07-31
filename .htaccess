@@ -207,3 +207,19 @@
 ## http://developer.yahoo.com/performance/rules.html#etags
 
     #FileETag none
+
+
+SetEnvIf Host www\.learning4\.lc MAGE_RUN_CODE=base
+SetEnvIf Host www\.learning4\.lc MAGE_RUN_TYPE=website
+SetEnvIf Host ^learning4\.lc MAGE_RUN_CODE=base
+SetEnvIf Host ^learning4\.lc MAGE_RUN_TYPE=website
+
+SetEnvIf Host www\.learning5\.lc MAGE_RUN_CODE=website5
+SetEnvIf Host www\.learning5\.lc MAGE_RUN_TYPE=website
+SetEnvIf Host ^learning5\.lc MAGE_RUN_CODE=website5
+SetEnvIf Host ^learning5\.lc MAGE_RUN_TYPE=website
+
+SetEnvIf Host www\.learning6\.lc MAGE_RUN_CODE=website6
+SetEnvIf Host www\.learning6\.lc MAGE_RUN_TYPE=website
+SetEnvIf Host ^learning6\.lc MAGE_RUN_CODE=website6
+SetEnvIf Host ^learning6\.lc MAGE_RUN_TYPE=website

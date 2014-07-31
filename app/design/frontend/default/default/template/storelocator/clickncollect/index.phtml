@@ -73,9 +73,6 @@
         console.log("I am in fetchPlaces");
         var centerInput =  jQuery("#centerInput").val();
         var radiusInput =  jQuery("#radiusInput").val();
-
-
-
         console.log("centerInput :: " + centerInput + " >> radiusInput :: " + radiusInput);
         jQuery.ajax({
             url : "http://maps.googleapis.com/maps/api/geocode/json?address=" + centerInput + "&sensor=false",
@@ -111,12 +108,12 @@
             success : function(response) {
                 console.log("Success StoreData :: " + response.status );
                 if (response.status == 'OK') {
-                    places = response.places;
+                    var places = response.places;
 
                     console.log("Total records :: " + response.records);
                     // loop through places and add markers
                     for (p in places) {
-                        console.log("Place  " +  places[p].name + ' geo0 :: ' + places[p].geo[0] );
+//                        console.log("Place  " +  places[p].name + ' geo0 :: ' + places[p].geo[0] );
                         //create gmap latlng obj
                         tmpLatLng = new google.maps.LatLng( places[p].geo[0], places[p].geo[1]);
                         // make and place map maker.
@@ -142,18 +139,19 @@
     function loadAddress(name){
         console.log("popUpclosed; I'm in loadAddress");
         $( "#element_to_pop_up" ).bPopup().close();
-        var dataUrl = '';
+        var dataUrl = '/api/storelocatoreStore.php?s='+name;
         jQuery.ajax({
             url : dataUrl,
             dataType : 'json',
             success : function(response) {
                 console.log("Success StoreData :: " + response.status );
                 if (response.status == 'OK') {
-
+                    var store = response.store_details[0];
+                    console.log( store.branch_name );
+                    $('#content').html('This is the new address ... ' + store.branch_name );
                 }
             }
         })
-        $('#content').html('This is the new address ... ' + name );
     };
 
 </script>

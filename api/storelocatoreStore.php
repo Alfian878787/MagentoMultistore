@@ -11,7 +11,7 @@ header('Content-Type: application/json');
 require("dbConf.php");
 
 
-$data['status']     = 'OK';
+$data['status']         = 'OK';
 $data['unique_name']  = $uniqueName    = ($_GET["s"])      ? $_GET["s"]    : '0';
 
 $query = "SELECT * FROM storelocator_branches WHERE unique_name='".$uniqueName."'";
