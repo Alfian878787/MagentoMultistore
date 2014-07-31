@@ -9,7 +9,7 @@
         color:#000;
         display:none;
         padding:20px;
-        min-width:900px;
+        min-width:960px;
         min-height: 90%;
     }
     .b-close{
@@ -19,11 +19,15 @@
         top:5px;
     }
     #map-content{
-        width:980px;
+        width:680px;
         height:500px;
     }
     .CollectFromHere{
         background: #0dffe6;
+    }
+    #storeList{
+        width: 260px;
+        background: #000;
     }
 </style>
 
@@ -50,8 +54,12 @@
         </div>
 
 
-        <div id="map-content">
-            <img src="https://www.ryman.co.uk/media/wysiwyg/ryman/misc/ryman_store_photo.jpg" width="100%"/>
+        <div id="mapLoad">
+            <img src="https://www.ryman.co.uk/media/wysiwyg/ryman/misc/ryman_store_photo.jpg" width="960px" id="defaultImg"/>
+
+            <div id="map-content"> </div>
+            <div id="storeList"> Store List is here  </div>
+
         </div>
 </div>
 <img src="https://www.ryman.co.uk/media/wysiwyg/ryman/misc/ryman_store_photo.jpg" width="100%"/>
@@ -71,6 +79,7 @@
     }
     function  fetchPlaces() {
         console.log("I am in fetchPlaces");
+        jQuery("#defaultImg").hide();
         var centerInput =  jQuery("#centerInput").val();
         var radiusInput =  jQuery("#radiusInput").val();
         console.log("centerInput :: " + centerInput + " >> radiusInput :: " + radiusInput);
@@ -124,9 +133,10 @@
                         var distance = getDistanceFromLatLon(lat, lng, places[p].geo[0], places[p].geo[1]);
                         distance = distance.toFixed(2);
                         console.log("Distance >   " + distance);
-                        bindInfoWindow(marker, map, infowindow, '<div   onclick="loadAddress( \'' + places[p].name  + '\');"> Collect From ' + places[p].name  + 'Distance :'+ distance + 'Mile </div>');
+                        bindInfoWindow(marker, map, infowindow, '<div   onclick="loadAddress( \'' + places[p].name  + '\');" class="CollectFromHere"> Collect From ' + places[p].name  + 'Distance :'+ distance + 'Mile </div>');
                     }
                 }
+                /**/
             }
         })
     };
