@@ -155,10 +155,11 @@
         distance = distance.toFixed(2);
         var storeList='';
         if(distance != 'NaN' ){  // TODO :: This is not correct way to filter, need to find a better way to filter empty array
+            var geoName = p.unique_name;
             storeList += '<b onclick="loadAddress( \'' + p.unique_name  + '\');" >' + p.name + '</b> (' + distance +  ' Mile) <br />';
             storeList += p.address1 + ' ' + p.city + ' ' + p.postcode + '<br />';
             storeList += 'Delivery In ' + p.delivery_note +  '<br />';
-//            storeList += '<div onclick="openInfoWindow( \'' + p.unique_name  + '\');"> Show On Map </div>' + '<br />';
+            storeList += '<div onclick="openInfoWindow( \'' + geoName  + '\');"> Show On Map </div>' + '<br />';
             storeList += '<hr>';
 //            console.log("Address:: <b>" + storeList + '</b>');
         }
