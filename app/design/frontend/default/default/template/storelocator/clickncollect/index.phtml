@@ -160,7 +160,7 @@
             storeList += '<b onclick="loadAddress( \'' + p.unique_name  + '\');" >' + p.name + '</b> (' + distance +  ' Mile) <br />';
             storeList += p.address1 + ' ' + p.city + ' ' + p.postcode + '<br />';
             storeList += 'Delivery In ' + p.delivery_note +  '<br />';
-//            storeList += '<div onclick="loadAddress( \'' + p.unique_name  + '\');"> Show On Map </div>' + '<br />';
+//            storeList += '<div onclick="openInfoWindow( \'' + p.unique_name  + '\');"> Show On Map </div>' + '<br />';
             storeList += '<hr>';
 //            console.log("Address:: <b>" + storeList + '</b>');
         }
@@ -197,7 +197,7 @@
         $( "#element_to_pop_up" ).bPopup().close();
     };
 
-    function showMarker(marker){
+    function openInfoWindow(marker){
         var gMarker = marker;
         var center = marker;
 
