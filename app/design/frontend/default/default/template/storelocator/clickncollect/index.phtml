@@ -73,6 +73,7 @@
     var markers = [];
     var lat = '';
     var lng = '';
+    var map;
 
     var infowindow =  new google.maps.InfoWindow({
         content: ''
@@ -115,7 +116,7 @@
             mapTypeId: 'roadmap'
         };
         console.log("MapOption init Succeeded");
-        var map = new google.maps.Map(document.getElementById("map-content"), mapOptions);
+        map = new google.maps.Map(document.getElementById("map-content"), mapOptions);
         console.log("map init Succeeded");
 
         var dataUrl = '/api/storelocatoreStores.php?s=2&w='+radiusInput+'&lat=' + lat +'&lng='+ lng + '&lb=0&le=5&m=true';
@@ -140,7 +141,6 @@
                             map: map,
                             position: tmpLatLng
                         });
-                        eval( '');
                         bindInfoWindow(marker, map, infowindow, '<div   onclick="loadAddress( \'' + p.name  + '\');" class="CollectFromHere"> Collect From ' + p.name  + 'Mile </div>');
 
                         // Building storeList for side Panel
@@ -160,7 +160,7 @@
             storeList += '<b onclick="loadAddress( \'' + p.unique_name  + '\');" >' + p.name + '</b> (' + distance +  ' Mile) <br />';
             storeList += p.address1 + ' ' + p.city + ' ' + p.postcode + '<br />';
             storeList += 'Delivery In ' + p.delivery_note +  '<br /> <hr>';
-            console.log("Address:: <b>" + storeList + '</b>');
+//            console.log("Address:: <b>" + storeList + '</b>');
         }
         return storeList;
     };
