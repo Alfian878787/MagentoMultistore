@@ -49,11 +49,15 @@ $array = NULL;
 while($row = mysqli_fetch_array($result)) {
     $array[] = array (
         'id'            => $row['id'],
-        'store_code'    => $row['store_code'],
-        'geo'           => array( $row['lat'], $row['lng']),
+//        'store_code'    => $row['store_code'],
+        'lat'           => $row['lat'],
+        'lng'           => $row['lng'],
         'name'          => $row['branch_name'],
         'unique_name'   => $row['unique_name'],
-        'infowindow'    => 'test data'
+        'address1'      => $row['address1'],
+        'city'          => $row['city'],
+        'postcode'      => $row['postcode'],
+        'delivery_note' => $row['delivery_note']
     );
 //    $array[] = $row;
 }

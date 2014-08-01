@@ -10,7 +10,7 @@
         display:none;
         padding:20px;
         min-width:960px;
-        min-height: 90%;
+        min-height: 500px;
     }
     .b-close{
         cursor:pointer;
@@ -19,16 +19,25 @@
         top:5px;
     }
     #map-content{
-        width:680px;
-        height:500px;
+        width: 680px;
+        height: 500px;
+        float: left;
     }
     .CollectFromHere{
         background: #0dffe6;
     }
     #storeList{
         width: 260px;
-        background: #000;
+        background: #9de7ff;
+        color: #000;
+        float: right;
+        display: none;
+        text-align: left;
     }
+    #mapLoad{
+        width: 960px;
+    }
+
 </style>
 
 
@@ -52,14 +61,10 @@
             <input type="submit" class="searchButton" value="SEARCH" onclick="fetchPlaces();">
             <button id="my-button">Reset</button>
         </div>
-
-
         <div id="mapLoad">
             <img src="https://www.ryman.co.uk/media/wysiwyg/ryman/misc/ryman_store_photo.jpg" width="960px" id="defaultImg"/>
-
             <div id="map-content"> </div>
             <div id="storeList"> Store List is here  </div>
-
         </div>
 </div>
 <img src="https://www.ryman.co.uk/media/wysiwyg/ryman/misc/ryman_store_photo.jpg" width="100%"/>
@@ -72,11 +77,7 @@
     var infowindow =  new google.maps.InfoWindow({
         content: ''
     });
-    function myFunction() {
-        console.log("I am in myFunction");
-        fetchPlaces();
-        return false;
-    }
+
     function  fetchPlaces() {
         console.log("I am in fetchPlaces");
         jQuery("#defaultImg").hide();
@@ -92,24 +93,32 @@
                     lat = response.results[0].geometry.viewport.northeast.lat;
                     lng = response.results[0].geometry.viewport.northeast.lng;
                     console.log("lat :: " + lat + " >> lng :: " + lng);
-                    getMarkers(lat, lng, radiusInput );
+                    getMapMarkers(lat, lng, radiusInput );
                 }
             }
         })
     };
 
-    function getMarkers(lat, lng, radiusInput ) {
+    function setRadius(radiusInput){
+        if (radiusInput == 10)  return 10;
+        if (radiusInput == 20)  return 10;
+        if (radiusInput == 30)  return 10;
+        if (radiusInput == 50)  return 9;
+        if (radiusInput == 100) return 9;
+        return 6;
+    }
+    function getMapMarkers(lat, lng, radiusInput ) {
         console.log("lat :: " + lat + " >> lng :: " + lng);
         var mapOptions = {
             center: new google.maps.LatLng(lat, lng),
-            zoom: 8,
+            zoom: setRadius(radiusInput),
             mapTypeId: 'roadmap'
         };
         console.log("MapOption init Succeeded");
         var map = new google.maps.Map(document.getElementById("map-content"), mapOptions);
         console.log("map init Succeeded");
 
-        var dataUrl = '/api/storelocatoreStores.php?s=1&w='+radiusInput+'&lat=' + lat +'&lng='+ lng + '&lb=0&le=350&m=true';
+        var dataUrl = '/api/storelocatoreStores.php?s=2&w='+radiusInput+'&lat=' + lat +'&lng='+ lng + '&lb=0&le=5&m=true';
         console.log("dataUrl :: " + dataUrl );
         jQuery.ajax({
             url : dataUrl,
@@ -118,27 +127,42 @@
                 console.log("Success StoreData :: " + response.status );
                 if (response.status == 'OK') {
                     var places = response.places;
-
                     console.log("Total records :: " + response.records);
+
+                    var storeList='';
                     // loop through places and add markers
-                    for (p in places) {
-//                        console.log("Place  " +  places[p].name + ' geo0 :: ' + places[p].geo[0] );
+                    for (s in places) {
+                        p = places[s];
                         //create gmap latlng obj
-                        tmpLatLng = new google.maps.LatLng( places[p].geo[0], places[p].geo[1]);
+                        tmpLatLng = new google.maps.LatLng( p.lat, p.lng);
                         // make and place map maker.
                         var marker = new google.maps.Marker({
                             map: map,
                             position: tmpLatLng
                         });
-                        var distance = getDistanceFromLatLon(lat, lng, places[p].geo[0], places[p].geo[1]);
-                        distance = distance.toFixed(2);
-                        console.log("Distance >   " + distance);
-                        bindInfoWindow(marker, map, infowindow, '<div   onclick="loadAddress( \'' + places[p].name  + '\');" class="CollectFromHere"> Collect From ' + places[p].name  + 'Distance :'+ distance + 'Mile </div>');
+                        eval( '');
+                        bindInfoWindow(marker, map, infowindow, '<div   onclick="loadAddress( \'' + p.name  + '\');" class="CollectFromHere"> Collect From ' + p.name  + 'Mile </div>');
+
+                        // Building storeList for side Panel
+                        storeList += genStoreList(p);
                     }
+                    $('#storeList').html( storeList) .show();
                 }
-                /**/
             }
         })
+    };
+
+    function genStoreList(p){
+        var distance = getDistanceFromLatLon(lat, lng, p.lat, p.lng);
+        distance = distance.toFixed(2);
+        var storeList='';
+        if(distance != 'NaN' ){  // TODO :: This is not correct way to filter, need to find a better way to filter empty array
+            storeList += '<b onclick="loadAddress( \'' + p.unique_name  + '\');" >' + p.name + '</b> (' + distance +  ' Mile) <br />';
+            storeList += p.address1 + ' ' + p.city + ' ' + p.postcode + '<br />';
+            storeList += 'Delivery In ' + p.delivery_note +  '<br /> <hr>';
+            console.log("Address:: <b>" + storeList + '</b>');
+        }
+        return storeList;
     };
 
     // binds a map marker and infoWindow together on click
@@ -149,28 +173,8 @@
         });
     };
 
-    function getDistanceFromLatLon(lat1,lon1,lat2,lon2) {
-        var R = 3959; // Radius of the earth in mile
-        var dLat = deg2rad(lat2-lat1);  // deg2rad below
-        var dLon = deg2rad(lon2-lon1);
-        var a =
-                Math.sin(dLat/2) * Math.sin(dLat/2) +
-                    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
-                        Math.sin(dLon/2) * Math.sin(dLon/2)
-            ;
-        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-        var d = R * c; // Distance in Mile
-        console.log("From  " + lat1 + lon1 + ' To ' + lat2 + lon2 +  " Distance> " + d );
-        return d;
-    }
-
-    function deg2rad(deg) {
-        return deg * (Math.PI/180)
-    }
-
     function loadAddress(name){
         console.log("popUpclosed; I'm in loadAddress");
-        $( "#element_to_pop_up" ).bPopup().close();
         var dataUrl = '/api/storelocatoreStore.php?s='+name;
         jQuery.ajax({
             url : dataUrl,
@@ -188,8 +192,36 @@
                 }
             }
         })
+        $( "#element_to_pop_up" ).bPopup().close();
     };
 
+    function showMarker(marker){
+        var gMarker = marker;
+        var center = marker;
+
+        google.maps.event.trigger(gMarker, 'click', {
+            latLng: center
+        });
+    };
+
+    function getDistanceFromLatLon(lat1,lon1,lat2,lon2) {
+        var R = 3959; // Radius of the earth in mile
+        var dLat = deg2rad(lat2-lat1);  // deg2rad below
+        var dLon = deg2rad(lon2-lon1);
+        var a =
+                Math.sin(dLat/2) * Math.sin(dLat/2) +
+                    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+                        Math.sin(dLon/2) * Math.sin(dLon/2)
+            ;
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        var d = R * c; // Distance in Mile
+        console.log("From  " + lat1 + lon1 + ' To ' + lat2 + lon2 +  " Distance> " + d );
+        return d;
+    };
+
+    function deg2rad(deg) {
+        return deg * (Math.PI/180)
+    };
 </script>
 
 
@@ -200,21 +232,15 @@
     ; (function($) {
         // DOM Ready
         $(function() {
-
             // Binding a click event
             // From jQuery v.1.7.0 use .on() instead of .bind()
             $('#my-button').bind('click', function(e) {
-
                 // Prevents the default action to be triggered.
                 e.preventDefault();
-
                 // Triggering bPopup when click event is fired
                 $('#element_to_pop_up').bPopup();
-
             });
-
         });
-
     })(jQuery);
 </script>
 

@@ -2877,3 +2877,256 @@
 2014-07-25T14:59:29+00:00 ERR (3): Notice: Undefined variable: store_details  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\index.phtml on line 40
 2014-07-25T14:59:29+00:00 ERR (3): Notice: Undefined variable: store_details  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\index.phtml on line 40
 2014-07-25T14:59:29+00:00 ERR (3): Notice: Undefined variable: store_details  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\index.phtml on line 40
+2014-08-01T09:00:12+00:00 ERR (3): Notice: Undefined variable: hours  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 213
+2014-08-01T09:00:12+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(243) : eval()'d code on line 1
+2014-08-01T09:00:22+00:00 ERR (3): Notice: Undefined variable: hours  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 213
+2014-08-01T09:00:22+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(243) : eval()'d code on line 1
+2014-08-01T09:01:06+00:00 ERR (3): Notice: Undefined index: mon_clode  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:01:06+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(243) : eval()'d code on line 1
+2014-08-01T09:01:24+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:01:24+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:01:24+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(244) : eval()'d code on line 1
+2014-08-01T09:02:39+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:02:39+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:02:39+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:02:39+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:02:39+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:02:39+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:02:39+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(248) : eval()'d code on line 1
+2014-08-01T09:02:45+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:02:45+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:02:45+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:02:45+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:02:45+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:02:45+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:02:45+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(248) : eval()'d code on line 1
+2014-08-01T09:02:52+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:02:52+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:02:52+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:02:52+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:02:52+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:02:52+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:02:52+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(248) : eval()'d code on line 1
+2014-08-01T09:02:58+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:02:58+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:02:58+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:02:58+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:02:58+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:02:58+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:02:58+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(248) : eval()'d code on line 1
+2014-08-01T09:03:04+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:03:04+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:03:04+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:03:04+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:03:04+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:03:04+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:03:04+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(248) : eval()'d code on line 1
+2014-08-01T09:03:11+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:03:11+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:03:11+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:03:11+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:03:11+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:03:11+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:03:11+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(248) : eval()'d code on line 1
+2014-08-01T09:03:18+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:03:18+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:03:18+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:03:18+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:03:18+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:03:18+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:03:18+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(248) : eval()'d code on line 1
+2014-08-01T09:03:25+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:03:25+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:03:25+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:03:25+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:03:25+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:03:25+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:03:25+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(248) : eval()'d code on line 1
+2014-08-01T09:03:31+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:03:31+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:03:31+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:03:31+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:03:31+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:03:31+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:03:31+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(248) : eval()'d code on line 1
+2014-08-01T09:03:38+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:03:38+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:03:38+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:03:38+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:03:38+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:03:38+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:03:38+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(248) : eval()'d code on line 1
+2014-08-01T09:03:44+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:03:44+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:03:44+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:03:44+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:03:44+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:03:44+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:03:44+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(248) : eval()'d code on line 1
+2014-08-01T09:03:50+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:03:50+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:03:50+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:03:50+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:03:50+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:03:50+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:03:50+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 231
+2014-08-01T09:03:50+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(249) : eval()'d code on line 1
+2014-08-01T09:03:57+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:03:57+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:03:57+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:03:57+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:03:57+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:03:57+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:03:57+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 231
+2014-08-01T09:03:57+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(249) : eval()'d code on line 1
+2014-08-01T09:04:03+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:04:03+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:04:03+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:04:03+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:04:03+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:04:03+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:04:03+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 231
+2014-08-01T09:04:03+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(249) : eval()'d code on line 1
+2014-08-01T09:04:10+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:04:10+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:04:10+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:04:10+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:04:10+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:04:10+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:04:10+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 231
+2014-08-01T09:04:10+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(249) : eval()'d code on line 1
+2014-08-01T09:04:16+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:04:16+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:04:16+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:04:16+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:04:16+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:04:16+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:04:16+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 231
+2014-08-01T09:04:16+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(249) : eval()'d code on line 1
+2014-08-01T09:04:22+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:04:22+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:04:22+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:04:22+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:04:22+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:04:22+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:04:22+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 231
+2014-08-01T09:04:22+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(249) : eval()'d code on line 1
+2014-08-01T09:04:29+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:04:29+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:04:29+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:04:29+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:04:29+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:04:29+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:04:29+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 231
+2014-08-01T09:04:29+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(249) : eval()'d code on line 1
+2014-08-01T09:04:35+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:04:35+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:04:35+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:04:35+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:04:35+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:04:35+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:04:35+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 231
+2014-08-01T09:04:35+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(249) : eval()'d code on line 1
+2014-08-01T09:04:41+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:04:41+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:04:41+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:04:41+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:04:41+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:04:41+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:04:41+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 231
+2014-08-01T09:04:41+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(249) : eval()'d code on line 1
+2014-08-01T09:04:48+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:04:48+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:04:48+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:04:48+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:04:48+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:04:48+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:04:48+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 231
+2014-08-01T09:04:48+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(249) : eval()'d code on line 1
+2014-08-01T09:04:55+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:04:55+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:04:55+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:04:55+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:04:55+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:04:55+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:04:55+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 231
+2014-08-01T09:04:55+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(249) : eval()'d code on line 1
+2014-08-01T09:05:01+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:05:01+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:05:01+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:05:01+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:05:01+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:05:01+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:05:01+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 231
+2014-08-01T09:05:01+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(249) : eval()'d code on line 1
+2014-08-01T09:05:08+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:05:08+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:05:08+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:05:08+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:05:08+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:05:08+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:05:08+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 231
+2014-08-01T09:05:08+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(249) : eval()'d code on line 1
+2014-08-01T09:05:14+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:05:14+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:05:14+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:05:14+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:05:14+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:05:14+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:05:14+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 231
+2014-08-01T09:05:14+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(249) : eval()'d code on line 1
+2014-08-01T09:05:21+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:05:21+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:05:21+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:05:21+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:05:21+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:05:21+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:05:21+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 231
+2014-08-01T09:05:21+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(249) : eval()'d code on line 1
+2014-08-01T09:05:27+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:05:27+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:05:27+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:05:27+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:05:27+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:05:27+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:05:27+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 231
+2014-08-01T09:05:27+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(249) : eval()'d code on line 1
+2014-08-01T09:05:34+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:05:34+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:05:34+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:05:34+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:05:34+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:05:34+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:05:34+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 231
+2014-08-01T09:05:34+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(249) : eval()'d code on line 1
+2014-08-01T09:05:40+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:05:40+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:05:40+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:05:40+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:05:40+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:05:40+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:05:40+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 231
+2014-08-01T09:05:40+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(249) : eval()'d code on line 1
+2014-08-01T09:05:46+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:05:46+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:05:46+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:05:46+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:05:46+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:05:46+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:05:46+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 231
+2014-08-01T09:05:46+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(249) : eval()'d code on line 1
+2014-08-01T09:05:53+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T09:05:53+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T09:05:53+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T09:05:53+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T09:05:53+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T09:05:53+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T09:05:53+00:00 ERR (3): Notice: Undefined index: mon_close  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 231
+2014-08-01T09:05:53+00:00 ERR (3): Notice: Undefined variable: name  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml(249) : eval()'d code on line 1
+2014-08-01T10:16:25+00:00 ERR (3): Notice: Undefined variable: row  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 225
+2014-08-01T10:16:25+00:00 ERR (3): Notice: Undefined variable: row  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 226
+2014-08-01T10:16:25+00:00 ERR (3): Notice: Undefined variable: row  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+2014-08-01T10:16:25+00:00 ERR (3): Notice: Undefined variable: row  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 228
+2014-08-01T10:16:25+00:00 ERR (3): Notice: Undefined variable: row  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 229
+2014-08-01T10:16:25+00:00 ERR (3): Notice: Undefined variable: row  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 230
+2014-08-01T10:16:25+00:00 ERR (3): Notice: Undefined variable: row  in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 231

@@ -2191,3 +2191,4 @@
 [30-Jul-2014 16:43:26 UTC] PHP Notice:  Trying to get property of non-object in C:\Zend\Apache2\htdocs\learning2\app\Mage.php on line 769
 [30-Jul-2014 16:43:26 UTC] PHP Notice:  Trying to get property of non-object in C:\Zend\Apache2\htdocs\learning2\app\Mage.php on line 769
 [30-Jul-2014 16:43:26 UTC] PHP Notice:  Trying to get property of non-object in C:\Zend\Apache2\htdocs\learning2\app\Mage.php on line 769
+[01-Aug-2014 09:00:00 UTC] PHP Parse error:  syntax error, unexpected '}' in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227

@@ -6,15 +6,17 @@
  * Time: 10:51
  */
 ?>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 <?
 $res = $this->getStoreDetails($this->getRequest()->getParam('id'));
 //echo '<pre>'; print_r($res);
 $store_details      = $res['store_details'];
-$hours      = $res['hours'];
+//$hours      = $res['hours'];
 $services   = $res['services'];
 $holiday    = $res['holiday'];
 $near_by    = $res['near_by'];
-$name = 'amjad';
+$branchName = $store_details['branch_name'];
 ?>
 
 
@@ -30,10 +32,10 @@ $name = 'amjad';
         background-color: #D2E0E6;
     }
     #store_details{
-        width: 950px;
+        width: 100%;
         margin-left: auto;
         margin-right: auto;
-        padding-left: 20px;
+        padding-left: 0;
         background-color: #fff;
         /*height: 1800px;*/
     }
@@ -54,7 +56,7 @@ $name = 'amjad';
     #map-canvas{
         float: right;
         width: 28%;
-        height: 100%;
+        height: 300px;
         margin: 10px;
     }
     #map-canvas:hover{
@@ -98,6 +100,22 @@ $name = 'amjad';
     }
     #opening{}
 
+    @media only screen and (max-width:479px) {
+        #content, #aside {
+            width: 100%;
+            height: auto;
+        }
+        #content {
+            border: none;
+            padding: 0;
+        }
+        #content div {
+            width: 100%;
+        }
+        #body_main {
+            height: auto;
+        }
+    }
 
 </style>
 <script>
@@ -158,24 +176,7 @@ $name = 'amjad';
     </div>
     <div class="clear"></div>
     <div id="body_main">
-        <div id="content">
-            <div id="about_store">
-                <h1> <?=$store_details['branch_title']?>  </h1>
-                <?=$store_details['branch_description']?>
-            </div>
-            <hr>
-            <div id="about_location">
-                <h1> <?=$store_details['location_title']?>  </h1>
-                <?=$store_details['location_description']?>
-            </div>
-            <hr>
-            <div id="near_us">
-                <h1><?=$store_details['near_us_title']?>  </h1>
-                <? $a=  $store_details['near_us_description'];
-                eval("\$a = \"$a\";");
-                echo $a;?>
-            </div>
-        </div>
+
         <div id="aside">
             <div id="location">
                 <h2> Location </h2>
@@ -209,7 +210,7 @@ $name = 'amjad';
                     echo $row['branch_name'].' '.'<br />';
                 }?>
                 </div><?}?>
-            <? if ($hours) {?> <br />
+            <br />
                 <div id="opening">
                     <h2> Opening Times </h2>
                     <?
@@ -220,12 +221,48 @@ $name = 'amjad';
                         }// End of for each $holiday
                        echo "<br />";  } // End if empty array?>
 
-                    <? foreach ($hours as $row){
-                        echo $row['day'].'  '.$this->numToMin($row['from_']).' '.$this->numToMin($row['to_']).' '.'<br />';
-                    }?>
-                </div> <?}?>
+                    <?
+                        echo 'Monday  '.$this->numToMin($store_details['mon_open']).' '.$this->numToMin($row['mon_close']).' '.'<br />';
+                        echo 'Tuesday  '.$this->numToMin($store_details['tues_open']).' '.$this->numToMin($row['mon_close']).' '.'<br />';
+                        echo 'Wednesday  '.$this->numToMin($store_details['wednes_open']).' '.$this->numToMin($row['mon_close']).' '.'<br />';
+                        echo 'Thursday  '.$this->numToMin($store_details['thurs_open']).' '.$this->numToMin($row['mon_close']).' '.'<br />';
+                        echo 'Friday  '.$this->numToMin($store_details['fri_open']).' '.$this->numToMin($row['mon_close']).' '.'<br />';
+                        echo 'Saturday  '.$this->numToMin($store_details['satur_open']).' '.$this->numToMin($row['mon_close']).' '.'<br />';
+                        echo 'Sunday  '.$this->numToMin($store_details['satur_open']).' '.$this->numToMin($row['mon_close']).' '.'<br />';
+                    ?>
+                </div>
         </div>
+        <div id="content">
+            <div id="about_store">
+                <h1> <?=$store_details['branch_title']?>  </h1>
+                <?=$store_details['branch_description']?>
+            </div>
+            <hr>
+            <div id="about_location">
+                <h1> <?=$store_details['location_title']?>  </h1>
+                <?=$store_details['location_description']?>
+            </div>
+            <hr>
+            <div id="near_us">
+                <h1><?=$store_details['near_us_title']?>  </h1>
+                <? $a=  $store_details['near_us_description'];
+                eval("\$a = \"$a\";");
+                echo $a;?>
+            </div>
+        </div>
+
     </div>
     <div class="clear"></div>
     <!--    window.scrollTo(x-coord, y-coord);-->
 </div>
+
+<script>
+    $('#map-canvas').hover(
+        function(){
+            $('#banner').hide();
+        },
+        function(){
+            $('#banner').show();
+        }
+    );
+</script>

@@ -137,8 +137,8 @@ storelocator_branch_list HAVING distance < $withIn ORDER BY distance LIMIT 0 , $
         $result =  $readConnection->fetchAll($query);
         $data['store_details'] = $result[0];
 
-        $query = "SELECT day, from_, to_ FROM  storelocator_hours_opening WHERE (branch_id=". $store_id ." AND active=1) ORDER BY  sn ASC";// . $resource->getTableName('catalog/product');
-        $data['hours'] =  $readConnection->fetchAll($query);
+//        $query = "SELECT day, from_, to_ FROM  storelocator_hours_opening WHERE (branch_id=". $store_id ." AND active=1) ORDER BY  sn ASC";// . $resource->getTableName('catalog/product');
+//        $data['hours'] =  $readConnection->fetchAll($query);
 
         $query = "SELECT id, service_name FROM  storelocator_services_store_details WHERE (branch_id=". $store_id ." AND active=1)";// . $resource->getTableName('catalog/product');
         $data['services']  =  $readConnection->fetchAll($query);
