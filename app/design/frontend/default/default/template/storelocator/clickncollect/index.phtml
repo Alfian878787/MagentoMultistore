@@ -108,6 +108,7 @@
         if (radiusInput == 100) return 9;
         return 6;
     }
+
     function getMapMarkers(lat, lng, radiusInput ) {
         console.log("lat :: " + lat + " >> lng :: " + lng);
         var mapOptions = {
@@ -139,7 +140,7 @@
                         tmpLatLng = new google.maps.LatLng( p.lat, p.lng);
                         // make and place map maker.
                         eval( "var geoName = new google.maps.Marker({ map: map, position: tmpLatLng });" );
-                        bindInfoWindow(geoName, map, infowindow, '<div   onclick="loadAddress( \'' + p.name  + '\');" class="CollectFromHere"> Collect From ' + p.name  + 'Mile </div>');
+                        bindInfoWindow(geoName, map, infowindow, '<div   onclick="loadAddress( \'' + p.unique_name  + '\');" class="CollectFromHere"> Collect From ' + p.name + '  </div>');
 
                         // Building storeList for side Panel
                         storeList += genStoreList(p);
@@ -159,7 +160,7 @@
             storeList += '<b onclick="loadAddress( \'' + p.unique_name  + '\');" >' + p.name + '</b> (' + distance +  ' Mile) <br />';
             storeList += p.address1 + ' ' + p.city + ' ' + p.postcode + '<br />';
             storeList += 'Delivery In ' + p.delivery_note +  '<br />';
-            storeList += '<div onclick="openInfoWindow( \'' + geoName  + '\');"> Show On Map </div>' + '<br />';
+//            storeList += '<div onclick="openInfoWindow( \'' + geoName  + '\');"> Show On Map </div>' + '<br />';
             storeList += '<hr>';
 //            console.log("Address:: <b>" + storeList + '</b>');
         }
@@ -224,8 +225,6 @@
         return deg * (Math.PI/180)
     };
 </script>
-
-
 <script>
     // Semicolon (;) to ensure closing of earlier scripting
     // Encapsulation
