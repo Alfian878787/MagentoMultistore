@@ -133,15 +133,13 @@
                     var storeList='';
                     // loop through places and add markers
                     for (s in places) {
-                        p = places[s];
+                        var p = places[s];
+                        var geoName = p.unique_name;
                         //create gmap latlng obj
                         tmpLatLng = new google.maps.LatLng( p.lat, p.lng);
                         // make and place map maker.
-                        var marker = new google.maps.Marker({
-                            map: map,
-                            position: tmpLatLng
-                        });
-                        bindInfoWindow(marker, map, infowindow, '<div   onclick="loadAddress( \'' + p.name  + '\');" class="CollectFromHere"> Collect From ' + p.name  + 'Mile </div>');
+                        eval( "var geoName = new google.maps.Marker({ map: map, position: tmpLatLng });" );
+                        bindInfoWindow(geoName, map, infowindow, '<div   onclick="loadAddress( \'' + p.name  + '\');" class="CollectFromHere"> Collect From ' + p.name  + 'Mile </div>');
 
                         // Building storeList for side Panel
                         storeList += genStoreList(p);
