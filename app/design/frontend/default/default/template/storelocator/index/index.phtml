@@ -7,15 +7,25 @@
 <html>
 <head>
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBl-XFi-PrFDZgDYRRD3PDtY4-xcRt6lkA&sensor=false"> </script>
+    <script>
+        navigator.geolocation.getCurrentPosition(GetLocation);
+        function GetLocation(location) {
+            document.getElementById("lat").value = location.coords.latitude;
+            document.getElementById("lng").value = location.coords.longitude;
+            document.getElementById("acc").value = location.coords.accuracy   ;
+            console.log(document.getElementById('lat').value + ' ' + document.getElementById('lng').value);
+        }
+    </script>
 </head>
-
 <body>
 <?
+//$one = "<script>document.getElementById('lng').value </script>";
+//echo $one; exit;
 $address  = $this->getRequest()->getPost('address');
 if (empty($address)){
     $initZoom       = 6;
-    $centerLat      = 53.089362;
-    $centerLng      = -4.852386;
+    $centerLat      = ($latitude)   ? $latitude     : 53.089362; // "<script>document.getElementById('lat').value</script>";//
+    $centerLng      = ($longitude)  ? $longitude    : -4.852386; // "<script>document.getElementById('lng').value</script>"; //
     $res            = $this->getAllStores();
 }else{
     $initZoom       = 9;
@@ -39,7 +49,6 @@ if (empty($address)){
     <?}?>
     function initialize()
     {
-
         var mapCenter = new google.maps.LatLng(<?=$centerLat?>, <?=$centerLng?> );
         var infowindow = null;
 
@@ -165,6 +174,9 @@ if (empty($address)){
         </form>
     </div>
     <div id="googleMap" style="width:100%;height:400px;"></div>
+    <input type="hidden" id="lat" value="">
+    <input type="hidden" id="lng" value="">
+    <input type="hidden" id="acc" value="">
     <div class="description">
         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
         <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. </p>
@@ -176,8 +188,7 @@ if (empty($address)){
         foreach ( $res as $row){ $name = $row['unique_name']; $id = $row['id'];?>
             <div class="storesList">
                 <h3> <?=$row['branch_name']?> </h3>
-                <p> <b> <?=$row['unique_name']?> </b>  Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. </p>
-                <div class="viewOnMap"  > <a href="#" onclick="showMarker(<?=$name?>)" > View on map </a></div>
+                <p> <?=$row['address1'] . ', ' . $row['address2'] . ', '.$row['town'] . ', ' .$row['city'] . ', '  .$row['postcode']   ?>   </p>  <div class="viewOnMap"  > <a href="#" onclick="showMarker(<?=$name?>)" > View on map </a></div>
                 <div class="goToStore"  > <a href='<?= Mage::getUrl("storelocator/index/details/", array('id' => $id)) ?>'>  Go to Store </a></div>
             </div>
         <?}}?>

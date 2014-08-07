@@ -7,6 +7,8 @@
  */
 ?>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script src="/js/storelocator/jquery.bpopup.min.js"></script>
 
 <?
 $res = $this->getStoreDetails($this->getRequest()->getParam('id'));
@@ -59,12 +61,7 @@ $branchName = $store_details['branch_name'];
         height: 300px;
         margin: 10px;
     }
-    #map-canvas:hover{
-        float: right;
-        width: 100%;
-        margin: 10px;
-        position: absolute;
-    }
+
     #body_main{
         width: 100%;
         height: 1800px;
@@ -98,7 +95,6 @@ $branchName = $store_details['branch_name'];
     #near_by_stores{
 
     }
-    #opening{}
 
     @media only screen and (max-width:479px) {
         #content, #aside {
@@ -118,54 +114,6 @@ $branchName = $store_details['branch_name'];
     }
 
 </style>
-<script>
-    var map;
-    var image = 'http://www.bluemarketingfirm.com/images/mapmarker_shadow.png';
-    var shadow = new google.maps.MarkerImage('http://www.snazzy-apps.com/navstarUS/img/icon_marker.png',
-        new google.maps.Size(51, 37),
-        new google.maps.Point(0,0),
-        new google.maps.Point(0, 37));
-
-    function initialize() {
-        var latlng = new google.maps.LatLng(<?=$store_details['lat']?>, <?=$store_details['lng']?>);
-        var options = {
-            zoom: <?=$store_details['map_zoom_branch_page']?>,
-            center: latlng,
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            mapTypeControl: true,
-            mapTypeControlOptions: {
-                style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
-                position: google.maps.ControlPosition.TOP_CENTER
-            },
-            panControl: true,
-            panControlOptions: {
-                position: google.maps.ControlPosition.RIGHT_TOP
-            },
-            zoomControl: true,
-            zoomControlOptions: {
-                style: google.maps.ZoomControlStyle.DEFAULT,
-                position: google.maps.ControlPosition.RIGHT_CENTER
-            },
-            scaleControl: true,  // fixed to BOTTOM_RIGHT
-            streetViewControl: true,
-            streetViewControlOptions: {
-                position: google.maps.ControlPosition.RIGHT_CENTER
-            }
-        };
-        var map = new google.maps.Map(document.getElementById("map-canvas"), options);
-
-        var marker = new google.maps.Marker({
-            position: latlng,
-            map: map,
-            icon: image,
-            shadow: shadow,
-            title:"<?=$store_details['branch_name']?>"
-        });
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
-
-
-</script>
 
 <div id="store_details" >
     <div id="banner_map">
@@ -222,13 +170,13 @@ $branchName = $store_details['branch_name'];
                        echo "<br />";  } // End if empty array?>
 
                     <?
-                        echo 'Monday  '.$this->numToMin($store_details['mon_open']).' '.$this->numToMin($row['mon_close']).' '.'<br />';
-                        echo 'Tuesday  '.$this->numToMin($store_details['tues_open']).' '.$this->numToMin($row['mon_close']).' '.'<br />';
-                        echo 'Wednesday  '.$this->numToMin($store_details['wednes_open']).' '.$this->numToMin($row['mon_close']).' '.'<br />';
-                        echo 'Thursday  '.$this->numToMin($store_details['thurs_open']).' '.$this->numToMin($row['mon_close']).' '.'<br />';
-                        echo 'Friday  '.$this->numToMin($store_details['fri_open']).' '.$this->numToMin($row['mon_close']).' '.'<br />';
-                        echo 'Saturday  '.$this->numToMin($store_details['satur_open']).' '.$this->numToMin($row['mon_close']).' '.'<br />';
-                        echo 'Sunday  '.$this->numToMin($store_details['satur_open']).' '.$this->numToMin($row['mon_close']).' '.'<br />';
+                        echo 'Monday  '.$this->numToMin($store_details['mon_open']).' '.$this->numToMin($store_details['mon_close']).' '.'<br />';
+                        echo 'Tuesday  '.$this->numToMin($store_details['tues_open']).' '.$this->numToMin($store_details['tues_close']).' '.'<br />';
+                        echo 'Wednesday  '.$this->numToMin($store_details['wednes_open']).' '.$this->numToMin($store_details['wednes_close']).' '.'<br />';
+                        echo 'Thursday  '.$this->numToMin($store_details['thurs_open']).' '.$this->numToMin($store_details['thurs_close']).' '.'<br />';
+                        echo 'Friday  '.$this->numToMin($store_details['fri_open']).' '.$this->numToMin($store_details['fri_close']).' '.'<br />';
+                        echo 'Saturday  '.$this->numToMin($store_details['satur_open']).' '.$this->numToMin($store_details['satur_close']).' '.'<br />';
+                        echo 'Sunday  '.$this->numToMin($store_details['sun_open']).' '.$this->numToMin($store_details['sun_close']).' '.'<br />';
                     ?>
                 </div>
         </div>
@@ -257,12 +205,68 @@ $branchName = $store_details['branch_name'];
 </div>
 
 <script>
-    $('#map-canvas').hover(
-        function(){
-            $('#banner').hide();
-        },
-        function(){
-            $('#banner').show();
-        }
-    );
+//    $('#map-canvas').hover(
+//        function(){
+//            $('#banner').hide();
+//        },
+//        function(){
+//            $('#banner').show();
+//        }
+//    );
+</script>
+
+
+
+<div id="element_to_pop_up">
+    <a class="b-close">close<a/>
+        <div id="map" style="width:960px; height:500px;">
+            <img src="http://maps.googleapis.com/maps/api/staticmap?center=<?=$store_details['lat']?>,<?=$store_details['lng']?>&zoom=<?=$store_details['map_zoom_branch_page']?>&size=960x500">
+        </div>
+</div>
+
+<script>
+    var map;
+    var image = 'http://www.bluemarketingfirm.com/images/mapmarker_shadow.png';
+    var shadow = new google.maps.MarkerImage('http://www.snazzy-apps.com/navstarUS/img/icon_marker.png',
+        new google.maps.Size(51, 37),
+        new google.maps.Point(0,0),
+        new google.maps.Point(0, 37));
+
+    function initialize() {
+        var latlng = new google.maps.LatLng(<?=$store_details['lat']?>, <?=$store_details['lng']?>);
+        var options = {
+            zoom: <?=$store_details['map_zoom_branch_page']?>,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            mapTypeControl: true,
+            mapTypeControlOptions: {
+                style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+                position: google.maps.ControlPosition.TOP_CENTER
+            },
+            panControl: true,
+            panControlOptions: {
+                position: google.maps.ControlPosition.RIGHT_TOP
+            },
+            zoomControl: true,
+            zoomControlOptions: {
+                style: google.maps.ZoomControlStyle.DEFAULT,
+                position: google.maps.ControlPosition.RIGHT_CENTER
+            },
+            scaleControl: true,  // fixed to BOTTOM_RIGHT
+            streetViewControl: true,
+            streetViewControlOptions: {
+                position: google.maps.ControlPosition.RIGHT_CENTER
+            }
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"), options);
+
+        var marker = new google.maps.Marker({
+            position: latlng,
+            map: map,
+            icon: image,
+            shadow: shadow,
+            title:"<?=$store_details['branch_name']?>"
+        });
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
 </script>

@@ -119,17 +119,29 @@
         console.log("MapOption init Succeeded");
         map = new google.maps.Map(document.getElementById("map-content"), mapOptions);
         console.log("map init Succeeded");
-
-        var dataUrl = '/api/storelocatoreStores.php?s=2&w='+radiusInput+'&lat=' + lat +'&lng='+ lng + '&lb=0&le=5&m=true';
+//        var dataUrl = '/api/storelocatoreStores.php?s=2&w='+radiusInput+'&lat=' + lat +'&lng='+ lng + '&lb=0&le=5&m=true';
+        var dataUrl =  "<?=$this->getUrl('storelocator/clickncollect/stores', array())?>" ;
+        var form_data = {
+            s: 1,
+            lat: lat,
+            lng: lng,
+            w: radiusInput,
+            m: true,
+            start: '0',
+            rows: '10',
+            ajax: '1'
+        };
         console.log("dataUrl :: " + dataUrl );
         jQuery.ajax({
             url : dataUrl,
             dataType : 'json',
+            type: 'GET',
+            data: form_data,
             success : function(response) {
                 console.log("Success StoreData :: " + response.status );
                 if (response.status == 'OK') {
                     var places = response.places;
-                    console.log("Total records :: " + response.records);
+                    console.log("Total records :: " + response.numberOfRecords);
 
                     var storeList='';
                     // loop through places and add markers
@@ -140,7 +152,7 @@
                         tmpLatLng = new google.maps.LatLng( p.lat, p.lng);
                         // make and place map maker.
                         eval( "var geoName = new google.maps.Marker({ map: map, position: tmpLatLng });" );
-                        bindInfoWindow(geoName, map, infowindow, '<div   onclick="loadAddress( \'' + p.unique_name  + '\');" class="CollectFromHere"> Collect From ' + p.name + '  </div>');
+                        bindInfoWindow(geoName, map, infowindow, '<div   onclick="loadAddress( \'' + p.unique_name  + '\');" class="CollectFromHere"> Collect From ' + p.branch_name + '  </div>');
 
                         // Building storeList for side Panel
                         storeList += genStoreList(p);
@@ -157,7 +169,7 @@
         var storeList='';
         if(distance != 'NaN' ){  // TODO :: This is not correct way to filter, need to find a better way to filter empty array
             var geoName = p.unique_name;
-            storeList += '<b onclick="loadAddress( \'' + p.unique_name  + '\');" >' + p.name + '</b> (' + distance +  ' Mile) <br />';
+            storeList += '<b onclick="loadAddress( \'' + p.unique_name  + '\');" >' + p.branch_name + '</b> (' + distance +  ' Mile) <br />';
             storeList += p.address1 + ' ' + p.city + ' ' + p.postcode + '<br />';
             storeList += 'Delivery In ' + p.delivery_note +  '<br />';
 //            storeList += '<div onclick="openInfoWindow( \'' + geoName  + '\');"> Show On Map </div>' + '<br />';
@@ -177,14 +189,21 @@
 
     function loadAddress(name){
         console.log("popUpclosed; I'm in loadAddress");
-        var dataUrl = '/api/storelocatoreStore.php?s='+name;
+        var dataUrl = "<?=$this->getUrl('storelocator/clickncollect/store', array())?>" ;
+        console.log('dataURL :: ' + dataUrl);
+        var form_data = {
+            name: name,
+            ajax: '1'
+        };
         jQuery.ajax({
             url : dataUrl,
             dataType : 'json',
+            type: 'GET',
+            data: form_data,
             success : function(response) {
                 console.log("Success StoreData :: " + response.status );
                 if (response.status == 'OK') {
-                    var store = response.store_details[0];
+                    var store = response.store_details;
                     var address = 'Ryman ' + store.branch_name + '<br />' +
                         store.address1 + ','   + '<br />' +
                         store.city + '. ' + store.postcode + '<br />' +

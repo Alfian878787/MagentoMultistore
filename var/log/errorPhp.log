@@ -2192,3 +2192,7 @@
 [30-Jul-2014 16:43:26 UTC] PHP Notice:  Trying to get property of non-object in C:\Zend\Apache2\htdocs\learning2\app\Mage.php on line 769
 [30-Jul-2014 16:43:26 UTC] PHP Notice:  Trying to get property of non-object in C:\Zend\Apache2\htdocs\learning2\app\Mage.php on line 769
 [01-Aug-2014 09:00:00 UTC] PHP Parse error:  syntax error, unexpected '}' in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 227
+[05-Aug-2014 10:53:16 UTC] PHP Parse error:  syntax error, unexpected ';' in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\index.phtml on line 13
+[05-Aug-2014 10:56:43 UTC] PHP Parse error:  syntax error, unexpected '<' in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\index.phtml on line 13
+[05-Aug-2014 13:34:37 UTC] PHP Parse error:  syntax error, unexpected ';', expecting T_VARIABLE or '$' in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\index.phtml on line 19
+[05-Aug-2014 14:33:32 UTC] PHP Fatal error:  Call to undefined method RymanGroup_StoreLocator_ClicknCollectController::getStoreDetails() in C:\Zend\Apache2\htdocs\learning2\app\code\local\RymanGroup\StoreLocator\controllers\clickncollectController.php on line 20

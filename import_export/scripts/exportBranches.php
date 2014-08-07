@@ -20,9 +20,7 @@ class exportBranchs extends Mage_Shell_Abstract{
             fputcsv($fp, array_keys($row));
             fputcsv($fp, array_values($row));
         }
-
     }
 }
-echo 'test';
 $import = new exportBranchs();
 $import->run();

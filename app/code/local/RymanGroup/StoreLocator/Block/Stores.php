@@ -129,7 +129,6 @@ storelocator_branch_list HAVING distance < $withIn ORDER BY distance LIMIT 0 , $
     }
 
     public function getStoreDetails($store_id=1) {
-
         $resource = Mage::getSingleton('core/resource');
         $readConnection = $resource->getConnection('core_read');
 
