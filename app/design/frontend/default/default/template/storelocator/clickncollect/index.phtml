@@ -122,7 +122,7 @@
 //        var dataUrl = '/api/storelocatoreStores.php?s=2&w='+radiusInput+'&lat=' + lat +'&lng='+ lng + '&lb=0&le=5&m=true';
         var dataUrl =  "<?=$this->getUrl('storelocator/clickncollect/stores', array())?>" ;
         var form_data = {
-            s: 1,
+            s: <?= Mage::app()->getStore()->getStoreId();?>,
             lat: lat,
             lng: lng,
             w: radiusInput,
@@ -204,7 +204,7 @@
                 console.log("Success StoreData :: " + response.status );
                 if (response.status == 'OK') {
                     var store = response.store_details;
-                    var address = 'Ryman ' + store.branch_name + '<br />' +
+                    var address = 'Ryman <a href="/'+store.unique_name+'" >' + store.branch_name + ' </a><br />' +
                         store.address1 + ','   + '<br />' +
                         store.city + '. ' + store.postcode + '<br />' +
                         'Tel : ' + store.telephone1 + '<br />' +

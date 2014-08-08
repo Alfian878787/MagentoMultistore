@@ -11,7 +11,11 @@
 <script src="/js/storelocator/jquery.bpopup.min.js"></script>
 
 <?
-$res = $this->getStoreDetails($this->getRequest()->getParam('id'));
+
+
+//$storeCode      = $this->getRequest()->getParam('storeCode');
+$uniqueName     = $this->getRequest()->getParam('name');
+$res = $this->getStoreDetails($uniqueName);
 //echo '<pre>'; print_r($res);
 $store_details      = $res['store_details'];
 //$hours      = $res['hours'];
@@ -214,15 +218,6 @@ $branchName = $store_details['branch_name'];
 //        }
 //    );
 </script>
-
-
-
-<div id="element_to_pop_up">
-    <a class="b-close">close<a/>
-        <div id="map" style="width:960px; height:500px;">
-            <img src="http://maps.googleapis.com/maps/api/staticmap?center=<?=$store_details['lat']?>,<?=$store_details['lng']?>&zoom=<?=$store_details['map_zoom_branch_page']?>&size=960x500">
-        </div>
-</div>
 
 <script>
     var map;

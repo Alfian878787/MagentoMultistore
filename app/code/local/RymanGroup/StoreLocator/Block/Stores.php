@@ -42,7 +42,9 @@ class RymanGroup_StoreLocator_Block_Stores extends Mage_Core_Block_Template
     public function getAllStores() {
         $resource = Mage::getSingleton('core/resource');
         $readConnection = $resource->getConnection('core_read');
-        $query = 'SELECT * FROM storelocator_branch_list' ;// . $resource->getTableName('catalog/product');
+
+        $store_code = Mage::app()->getStore()->getStoreId() ;
+        $query = "SELECT * FROM storelocator_branch_list WHERE store_code=$store_code" ;// . $resource->getTableName('catalog/product');
         return $readConnection->fetchAll($query);
     }
 
@@ -51,6 +53,9 @@ class RymanGroup_StoreLocator_Block_Stores extends Mage_Core_Block_Template
         $readConnection = $resource->getConnection('core_read');
 
         $this->logData($centerLat.'/'.$centerLng, 'Center Check ', FALSE);  // DEBUG
+
+        $storeCode = Mage::app()->getStore()->getStoreId() ;
+        $filterByStore = ($storeCode == 0) ?  NULL : "WHERE store_code='$storeCode'" ;
 
         $withIn = 300;
         $mile = TRUE;
@@ -64,7 +69,7 @@ cos( radians($centerLat) )
 * cos( radians( lng ) - radians($centerLng) )
 + sin( radians($centerLat) )
 * sin( radians( lat ) ) ) ) AS distance FROM
-storelocator_branch_list HAVING distance < $withIn ORDER BY distance LIMIT 0 , $maxStore";
+storelocator_branch_list $filterByStore HAVING distance < $withIn   ORDER BY distance LIMIT 0 , $maxStore ";
 
         $result = $readConnection->fetchAll($query);
         return $result;
@@ -128,25 +133,27 @@ storelocator_branch_list HAVING distance < $withIn ORDER BY distance LIMIT 0 , $
         return $center;
     }
 
-    public function getStoreDetails($store_id=1) {
+    public function getStoreDetails($unique_name='woking') {
         $resource = Mage::getSingleton('core/resource');
         $readConnection = $resource->getConnection('core_read');
 
-        $query = "SELECT * FROM storelocator_branches where id=".$store_id ;// . $resource->getTableName('catalog/product');
-        $result =  $readConnection->fetchAll($query);
+        $store_code = Mage::app()->getStore()->getStoreId() ;
+        $query = "SELECT * FROM storelocator_branches where unique_name='$unique_name'  AND store_code=$store_code" ;
+        $result =  $readConnection->fetchAll($query);  //print_r($result[0]);
+        if (empty($result[0]['store_code'])){
+            die('<h1> This Store Doesnot exist. </h1>'. $unique_name.'('. $store_code .')');
+        }
         $data['store_details'] = $result[0];
+        $branch_id = $result[0]['store_code'];
 
-//        $query = "SELECT day, from_, to_ FROM  storelocator_hours_opening WHERE (branch_id=". $store_id ." AND active=1) ORDER BY  sn ASC";// . $resource->getTableName('catalog/product');
-//        $data['hours'] =  $readConnection->fetchAll($query);
+        $query = "SELECT id, service_name FROM  storelocator_services_store_details WHERE (branch_id=". $branch_id ." AND active=1)";
+        $data['services']   =  $readConnection->fetchAll($query);
 
-        $query = "SELECT id, service_name FROM  storelocator_services_store_details WHERE (branch_id=". $store_id ." AND active=1)";// . $resource->getTableName('catalog/product');
-        $data['services']  =  $readConnection->fetchAll($query);
+        $query = "SELECT holiday_date, holiday_name, from_, to_ FROM  storelocator_hours_holiday WHERE (branch_id=". $branch_id ." AND active=1)";
+        $data['holiday']    =  $readConnection->fetchAll($query);
 
-        $query = "SELECT holiday_date, holiday_name, from_, to_ FROM  storelocator_hours_holiday WHERE (branch_id=". $store_id ." AND active=1)";// . $resource->getTableName('catalog/product');
-        $data['holiday'] =  $readConnection->fetchAll($query);
-
-        $query = "SELECT branch_name, unique_name FROM   storelocator_near_by_details WHERE (branch_id=". $store_id ." AND active=1)";// . $resource->getTableName('catalog/product');
-        $data['near_by'] =  $readConnection->fetchAll($query);
+        $query = "SELECT branch_name, unique_name FROM   storelocator_near_by_details WHERE (branch_id=". $branch_id ." AND active=1)";
+        $data['near_by']    =  $readConnection->fetchAll($query);
 
         return $data;
     }
@@ -154,10 +161,10 @@ storelocator_branch_list HAVING distance < $withIn ORDER BY distance LIMIT 0 , $
     public function numToMin($min){
         $mn = $min%60;
         $hour   = ($min - $mn )/60;
-        $ampm   = ($hour < 12 )? 'AM' : 'PM';
-        $hour   = ($hour < 12 )? $hour : $hour-12;
+        $ampm   = ($hour < 12 ) ? 'AM'      : 'PM';
+        $hour   = ($hour < 12 ) ? $hour     : $hour-12;
         $hour   = ($hour < 10 ) ? '0'.$hour : $hour;
-        $mn     = ($mn < 10 ) ? '0'.$mn : $mn;
+        $mn     = ($mn < 10 )   ? '0'.$mn   : $mn;
         return $hour.':'.$mn.$ampm;
     }
 

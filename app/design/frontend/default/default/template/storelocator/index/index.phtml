@@ -7,15 +7,6 @@
 <html>
 <head>
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBl-XFi-PrFDZgDYRRD3PDtY4-xcRt6lkA&sensor=false"> </script>
-    <script>
-        navigator.geolocation.getCurrentPosition(GetLocation);
-        function GetLocation(location) {
-            document.getElementById("lat").value = location.coords.latitude;
-            document.getElementById("lng").value = location.coords.longitude;
-            document.getElementById("acc").value = location.coords.accuracy   ;
-            console.log(document.getElementById('lat').value + ' ' + document.getElementById('lng').value);
-        }
-    </script>
 </head>
 <body>
 <?
@@ -24,8 +15,8 @@
 $address  = $this->getRequest()->getPost('address');
 if (empty($address)){
     $initZoom       = 6;
-    $centerLat      = ($latitude)   ? $latitude     : 53.089362; // "<script>document.getElementById('lat').value</script>";//
-    $centerLng      = ($longitude)  ? $longitude    : -4.852386; // "<script>document.getElementById('lng').value</script>"; //
+    $centerLat      = 53.089362; // "<script>document.getElementById('lat').value</script>";//
+    $centerLng      = -4.852386; // "<script>document.getElementById('lng').value</script>"; //
     $res            = $this->getAllStores();
 }else{
     $initZoom       = 9;
@@ -35,67 +26,6 @@ if (empty($address)){
     $res            = $this->getStoresLatLng($centerLat,$centerLng);
 }
 ?>
-<script>
-    <?
-       foreach ( $res as $row){ $name = $row['unique_name'] ?>
-
-    var image = '<?=$row['map_marker_list_page']?>' ; // 'http://www.bluemarketingfirm.com/images/mapmarker_shadow.png';
-    var <?=$name?> = new google.maps.LatLng(<?=$row['lat']?>, <?=$row['lng']?>);
-    var <?=$name?> = new google.maps.Marker({
-        position:<?=$name?>,
-        icon: image,
-        title:"<?=$row['branch_name']?>"
-    });
-    <?}?>
-    function initialize()
-    {
-        var mapCenter = new google.maps.LatLng(<?=$centerLat?>, <?=$centerLng?> );
-        var infowindow = null;
-
-        var mapProp = {
-            center:mapCenter,
-            zoom:<?=$initZoom?>,
-            mapTypeId:google.maps.MapTypeId.ROADMAP
-        };
-
-        var map=new google.maps.Map(document.getElementById("googleMap") ,mapProp);
-
-        <?
-         foreach ( $res as $row){
-            $name = $row['unique_name'];
-            $map_branch_img_list_page       = $row['map_branch_img_list_page'];
-            $map_zoom_list_page             = $row['map_zoom_list_page'];
-            $address                        = $row['address1'].', '.$row['city'];
-            $url                            = Mage::getUrl("storelocator/index/details/", array('id' => $row['id']));
-            $storeGoUrl                     = '<a href="'.$url.'"> '.$address.' </a>'; ?>
-
-            google.maps.event.addListener( <?=$name?>,'click',function() {
-                map.setZoom(<?=$map_zoom_list_page?>);
-                map.setCenter(<?=$name?>.getPosition());
-                if (infowindow) {
-                    infowindow.close();
-                }
-                infowindow = new google.maps.InfoWindow();
-                infowindow.setContent('<img src="<?=$map_branch_img_list_page?>" width="300px"/> <br /> Visit ' + '<?=$storeGoUrl?>');
-                infowindow.open(map,<?=$name?>);
-            });
-            <?=$name?>.setMap(map);
-        <?}?>
-    }
-
-    function showMarker(marker){
-        var gMarker = marker;
-        var center = marker;
-
-        google.maps.event.trigger(gMarker, 'click', {
-            latLng: center
-        });
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
-
-
-</script>
-
 <style>
     #searchArea{
         height:50px;
@@ -185,14 +115,95 @@ if (empty($address)){
     <?if(empty($res)){
         echo '<h1> Could not locate any store for GU21 5ED </h1>';
     }else {
-        foreach ( $res as $row){ $name = $row['unique_name']; $id = $row['id'];?>
+        foreach ( $res as $row){
+            $name = $row['unique_name'];
+            $id = $row['id'];
+            ?>
             <div class="storesList">
                 <h3> <?=$row['branch_name']?> </h3>
                 <p> <?=$row['address1'] . ', ' . $row['address2'] . ', '.$row['town'] . ', ' .$row['city'] . ', '  .$row['postcode']   ?>   </p>  <div class="viewOnMap"  > <a href="#" onclick="showMarker(<?=$name?>)" > View on map </a></div>
-                <div class="goToStore"  > <a href='<?= Mage::getUrl("storelocator/index/details/", array('id' => $id)) ?>'>  Go to Store </a></div>
+                <div class="goToStore"  > <a href="/<?=$name?>">  Go to Store </a></div>
             </div>
         <?}}?>
 
 </div>
 </body>
 </html>
+
+
+<script>
+
+//    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+//        navigator.geolocation.getCurrentPosition(GetLocation);
+//        function GetLocation(location) {
+//            document.getElementById("lat").value = location.coords.latitude;
+//            document.getElementById("lng").value = location.coords.longitude;
+//            document.getElementById("acc").value = location.coords.accuracy ;
+//            console.log(document.getElementById('lat').value + ' ' + document.getElementById('lng').value);
+//        }
+//    }else{
+        document.getElementById("lat").value = <?=$centerLat?>;
+        document.getElementById("lng").value = <?=$centerLng?>;
+//    }
+
+    console.log(document.getElementById('lat').value + ' ' + document.getElementById('lng').value);
+
+    <?
+       foreach ( $res as $row){ $name = $row['unique_name'] ?>
+
+    var image = '<?=$row['map_marker_list_page']?>' ; // 'http://www.bluemarketingfirm.com/images/mapmarker_shadow.png';
+    var <?=$name?> = new google.maps.LatLng(<?=$row['lat']?>, <?=$row['lng']?>);
+    var <?=$name?> = new google.maps.Marker({
+        position:<?=$name?>,
+        icon: image,
+        title:"<?=$row['branch_name']?>"
+    });
+    <?}?>
+    function initialize()
+    {
+        var mapCenter = new google.maps.LatLng(document.getElementById("lat").value, document.getElementById("lng").value  );
+        var infowindow = null;
+
+        var mapProp = {
+            center:mapCenter,
+            zoom:<?=$initZoom?>,
+            mapTypeId:google.maps.MapTypeId.ROADMAP
+        };
+
+        var map=new google.maps.Map(document.getElementById("googleMap") ,mapProp);
+
+        <?
+         foreach ( $res as $row){
+            $name = $row['unique_name'];
+            $map_branch_img_list_page       = $row['map_branch_img_list_page'];
+            $map_zoom_list_page             = $row['map_zoom_list_page'];
+            $address                        = $row['address1'].', '.$row['city'];
+            $url                            = '/'.$name;
+            $storeGoUrl                     = '<a href="'.$url.'"> '.$address.' </a>'; ?>
+
+        google.maps.event.addListener( <?=$name?>,'click',function() {
+            map.setZoom(<?=$map_zoom_list_page?>);
+            map.setCenter(<?=$name?>.getPosition());
+            if (infowindow) {
+                infowindow.close();
+            }
+            infowindow = new google.maps.InfoWindow();
+            infowindow.setContent('<img src="<?=$map_branch_img_list_page?>" width="300px"/> <br /> Visit ' + '<?=$storeGoUrl?>');
+            infowindow.open(map,<?=$name?>);
+        });
+        <?=$name?>.setMap(map);
+        <?}?>
+    }
+
+    function showMarker(marker){
+        var gMarker = marker;
+        var center = marker;
+
+        google.maps.event.trigger(gMarker, 'click', {
+            latLng: center
+        });
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+
+</script>
