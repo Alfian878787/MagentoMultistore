@@ -1,4 +1,8 @@
 <?php
+/*
+ *  Dir ::  cd C:\Zend\Apache2\htdocs\learning2\import_export\scripts
+ * Sample Run :: php exportBranches.php
+ */
 require_once("../../shell/abstract.php");
 require_once("Functions.php");
 Functions::safeMode(0,  __FILE__, __LINE__ );

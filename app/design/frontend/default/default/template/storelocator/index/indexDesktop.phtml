@@ -1,0 +1,151 @@
+<body>
+
+<input type="hidden" id="lat" value="">
+<input type="hidden" id="lng" value="">
+<input type="hidden" id="acc" value="">
+
+<? $address  = $this->getRequest()->getPost('address'); if (empty($address)){ ?>
+<script>
+    //if(   /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        navigator.geolocation.getCurrentPosition(GetLocation);
+        function GetLocation(location) {
+            document.getElementById("lat").value = location.coords.latitude;
+            document.getElementById("lng").value = location.coords.longitude;
+            document.getElementById("acc").value = location.coords.accuracy ;
+            console.log(document.getElementById('lat').value + ' ' + document.getElementById('lng').value);
+        }
+//    }
+</script>
+<? }
+if (empty($address)){
+    $initZoom       = 6;
+    $centerLat      = 53.089362; // "<script>document.getElementById('lat').value</script>";//
+    $centerLng      = -4.852386; // "<script>document.getElementById('lng').value</script>"; //
+    $res            = $this->getAllStores();
+}else{
+    $initZoom       = 9;
+    $center         = $this->getCenter($address);
+    $centerLat      = floatval($center['lat']); // 51.677; //
+    $centerLng      = floatval($center['lng']); //-0.606; //
+    $res            = $this->getStoresLatLng($centerLat,$centerLng);
+}
+?>
+
+<div id='content'>
+    <a href="/storelocator"> storeLocator </a>
+    <div id="searchArea">
+        <p> Find your nearest store </p>
+        <form name="input" action="<?php echo Mage::getUrl('storelocator/index/index') ?>" method='post'>
+            <input type="checkbox" name="dhl" value="Bike">&nbsp;DHL &nbsp;
+            <input type="checkbox" name="copy" value="Bike">&nbsp;Copy&nbsp;
+            <input type="checkbox" name="scan" value="Bike">&nbsp;Scan&nbsp;
+            <input type="checkbox" name="dhl2" value="Bike">&nbsp;DHL&nbsp;
+            <input type="text" name="address" class="searchBox"  placeholder="Enter Town Or Postcode">
+            <input type="submit" class="searchButton" value="SEARCH">
+        </form>
+    </div>
+    <div id="googleMap" style="width:100%;height:400px;"></div>
+    <div class="description">
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
+        <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. </p>
+    </div>
+
+    <?if(empty($res)){
+        echo '<h1> Could not locate any store for GU21 5ED </h1>';
+    }else {
+        foreach ( $res as $row){
+            $name = $row['unique_name'];
+            $id = $row['id'];
+            ?>
+            <div class="store">
+                <h3> <?=$row['branch_name']?> <?/*=$row['store_code']*/?> </h3>
+                <p> <?=$row['address1'] . ', ' . $row['address2'] . ', '.$row['town'] . ', ' .$row['city'] . ', '  .$row['postcode']   ?>   </p>  <div class="viewOnMap"  > <a href="#" onclick="openInfoWindow(<?=$name?>)" > View on map </a></div>
+                <div class="goToStore"  > <a href="/<?=$name?>">  Go to Store </a></div>
+            </div>
+        <?}}?>
+
+</div>
+</body>
+<script>
+
+    document.getElementById("lat").value = <?=$centerLat?>;
+    document.getElementById("lng").value = <?=$centerLng?>;
+
+    <? foreach ( $res as $row){ $name = $row['unique_name'] ?>
+            var image = '<?=$row['map_marker_list_page']?>' ; // 'http://www.bluemarketingfirm.com/images/mapmarker_shadow.png';
+            var <?=$name?> = new google.maps.LatLng(<?=$row['lat']?>, <?=$row['lng']?>);
+            var <?=$name?> = new google.maps.Marker({
+                position:<?=$name?>,
+                icon: image,
+                title:"<?=$row['branch_name']?>"
+            });
+    <?}?>
+
+    function initialize()
+    {
+        var mapCenter = new google.maps.LatLng(document.getElementById("lat").value, document.getElementById("lng").value  );
+        var infowindow = null;
+
+        var mapProp = {
+            center:mapCenter,
+            zoom:<?=$initZoom?>,
+            mapTypeId:google.maps.MapTypeId.ROADMAP
+        };
+
+        var map=new google.maps.Map(document.getElementById("googleMap") ,mapProp);
+
+        <?
+         foreach ( $res as $row){
+            $name = $row['unique_name'];
+            $branch_name = $row['branch_name'];
+            $map_branch_img_list_page       = $row['map_branch_img_list_page'];
+            $map_zoom_list_page             = $row['map_zoom_list_page'];
+            $phone                          = $row['phone'];
+            $address                        = $row['address1'].', <br /> '.$row['city'].'<br /> '.$row['postcode'];
+            $url                            = '/'.$name;
+            $viewDetails                    = '<a href="'.$url.'"> View Details </a>';
+
+             $openingHours = 'Monday   '.$this->numToMin($row['mon_open']).' '.$this->numToMin($row['mon_close']).' '.'<br />';
+             $openingHours .= 'Tuesday   '.$this->numToMin($row['tues_open']).' '.$this->numToMin($row['tues_close']).' '.'<br />';
+             $openingHours .= 'Wednesday  '.$this->numToMin($row['wednes_open']).' '.$this->numToMin($row['wednes_close']).' '.'<br />';
+             $openingHours .= 'Thursday   '.$this->numToMin($row['thurs_open']).' '.$this->numToMin($row['thurs_close']).' '.'<br />';
+             $openingHours .= 'Friday   '.$this->numToMin($row['fri_open']).' '.$this->numToMin($row['fri_close']).' '.'<br />';
+             $openingHours .= 'Saturday  '.$this->numToMin($row['satur_open']).' '.$this->numToMin($row['satur_close']).' '.'<br />';
+             $openingHours .= 'Sunday   '.$this->numToMin($row['sun_open']).' '.$this->numToMin($row['sun_close']).' '.'<br />';
+
+
+            $details = "<h1>". $branch_name ."</h1>";
+            $details .= "<p>". $address ."</p>";
+            $details .= "<p>". $phone ."</p>";
+            $details .= "<p>". $viewDetails ."</p>";
+
+            $infoWindow = "<div class=\'infoWindow\'> ";
+            $infoWindow .= "<div class=\'details\'> $details  </div>";
+            $infoWindow .= "<div class=\'openingHours\'> $openingHours </div>";
+            $infoWindow .= "</div>";
+            ?>
+
+            google.maps.event.addListener( <?=$name?>,'click',function() {
+                map.setZoom(<?=$map_zoom_list_page?>);
+                map.setCenter(<?=$name?>.getPosition());
+                if (infowindow) {
+                    infowindow.close();
+                }
+                infowindow = new google.maps.InfoWindow();
+                infowindow.setContent('<?=$infoWindow?>');
+                infowindow.open(map,<?=$name?>);
+            });
+            <?=$name?>.setMap(map);
+        <?}?>
+    }
+
+    function openInfoWindow(marker){
+        var gMarker = marker;
+        var center = marker;
+
+        google.maps.event.trigger(gMarker, 'click', {
+            latLng: center
+        });
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>

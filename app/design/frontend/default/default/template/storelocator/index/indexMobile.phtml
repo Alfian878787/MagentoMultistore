@@ -1,0 +1,221 @@
+<body>
+<??>
+
+<div id='content'>
+    <div id="lookingCoordinates‎" style="display:none;width:300px; border:1px solid black;position:absolute;
+        top:40%;left:40%;padding:2px; background:#fff; text-align: center; z-index: 1;">
+        <img src='http://www.hocsinc.com/images/please-wait-ani.gif' width="300"/> <br />
+    </div>
+
+<!--    <div id="lookingCordinates"> <img src="http://www.hocsinc.com/images/please-wait-ani.gif" /></div>-->
+    <div id="searchArea">
+        <p> Find your nearest store </p>
+        <form name="input" action="<?php echo Mage::getUrl('storelocator/index/index') ?>" method='post'>
+            <input type="checkbox" name="dhl" value="Bike">&nbsp;DHL &nbsp;
+            <input type="checkbox" name="copy" value="Bike">&nbsp;Copy&nbsp;
+            <input type="checkbox" name="scan" value="Bike">&nbsp;Scan&nbsp;
+            <input type="checkbox" name="dhl2" value="Bike">&nbsp;DHL&nbsp;
+            <input type="text" name="address" class="searchBox"  placeholder="Enter Town Or Postcode">
+            <input type="submit" class="searchButton" value="SEARCH">
+        </form>
+    </div>
+    <div id="googleMap" style="width:100%;height:400px;"></div>
+    <input type="hidden" id="lat" value="">
+    <input type="hidden" id="lng" value="">
+    <input type="hidden" id="acc" value="">
+    <div class="description">
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
+        <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. </p>
+    </div>
+
+<!--    --><?//if(empty($res)){
+//        echo '<h1> Could not locate any store for GU21 5ED </h1>';
+//    }else {
+//        foreach ( $res as $row){
+//            $name = $row['unique_name'];
+//            $id = $row['id'];
+//            ?>
+<!--            <div class="storesList">-->
+<!--                <h3> --><?//=$row['branch_name']?><!-- </h3>-->
+<!--                <p> --><?//=$row['address1'] . ', ' . $row['address2'] . ', '.$row['town'] . ', ' .$row['city'] . ', '  .$row['postcode']   ?><!--   </p>  <div class="viewOnMap"  > <a href="#" onclick="showMarker(--><?//=$name?><!--)" > View on map </a></div>-->
+<!--                <div class="goToStore"  > <a href="/--><?//=$name?><!--">  Go to Store </a></div>-->
+<!--            </div>-->
+<!--        --><?//}}?>
+
+    <div id="storesList">
+        Store loads here ...
+    </div>
+
+
+</div>
+</body>
+
+<script>
+    var markers = [];
+    var lat = '';
+    var lng = '';
+    var map;
+
+    var infowindow =  new google.maps.InfoWindow({
+        content: ''
+    });
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        navigator.geolocation.getCurrentPosition(fetchPlacesMobile);
+    }else{
+//        fetchPlacesDesktop();
+        console.log('Looking for your Lat && lng, Please wait.');
+        navigator.geolocation.getCurrentPosition(fetchPlacesMobile);
+        $('#lookingCoordinates‎').show();
+    }
+/*
+ function GetLocation(location) {
+ document.getElementById("lat").value = location.coords.latitude;
+ document.getElementById("lng").value = location.coords.longitude;
+ document.getElementById("acc").value = location.coords.accuracy ;
+ console.log(document.getElementById('lat').value + ' ' + document.getElementById('lng').value);
+ }
+ */
+    function  fetchPlacesMobile(location) {
+        console.log("I am in fetchPlacesMobile");
+        lat = location.coords.latitude; //51.823872;
+        lng = location.coords.longitude; //-3.019166;
+        var radiusInput = 20;
+
+        $('#lookingCoordinates‎').hide();
+        getMapMarkers(lat, lng, radiusInput );
+    };
+
+    function  fetchPlacesDesktop() {
+        console.log("I am in fetchPlacesDesktop");
+        lat =  51.5072;
+        lng = 0.1275;
+        var radiusInput = 30;
+
+        $('#lookingCoordinates‎').hide();
+        getMapMarkers(lat, lng, radiusInput );
+    };
+
+    function setRadius(radiusInput){
+        if (radiusInput == 10)  return 16;
+        if (radiusInput == 20)  return 14;
+        if (radiusInput == 30)  return 10;
+        if (radiusInput == 50)  return 9;
+        if (radiusInput == 100) return 9;
+        return 6;
+    }
+
+    function getMapMarkers(lat, lng, radiusInput ) {
+        console.log("lat :: " + lat + " >> lng :: " + lng);
+        var mapOptions = {
+            center: new google.maps.LatLng(lat, lng),
+            zoom: setRadius(radiusInput),
+            mapTypeId: 'roadmap'
+        };
+//        console.log("MapOption init Succeeded");
+        map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
+        console.log("map init Succeeded");
+
+        var dataUrl =  "<?=$this->getUrl('storelocator/clickncollect/stores', array())?>" ;
+        var form_data = {
+            s:  <?= Mage::app()->getStore()->getStoreId();?>,
+            lat: lat,
+            lng: lng,
+            w: radiusInput,
+            m: true,
+            start: '0',
+            rows: '20',
+            ajax: '1'
+        };
+        console.log("dataUrl :: " + dataUrl );
+        var storeList ='';
+        var markersOnMap = '';
+        jQuery.ajax({
+            url : dataUrl,
+            dataType : 'json',
+            type: 'GET',
+            data: form_data,
+            success : function(response) {
+                console.log("Success StoreData :: " + response.status );
+                if (response.status == 'OK') {
+                    var places = response.places;
+                    console.log("Total records :: " + response.numberOfRecords);
+                    // loop through places and add markers
+                    for (s in places) {
+                        var p = places[s];
+                        var geoName = p.unique_name;
+                        //create gmap latlng obj
+                        tmpLatLng = new google.maps.LatLng( p.lat, p.lng);
+//                        console.log("lat :: " +  p.lat + " >> lng :: " +  p.lng + ' :: ' + p.unique_name);
+                        // make and place map maker.
+                        eval ( "geoName = new google.maps.Marker({ map: map, position: tmpLatLng }); " ) ;
+
+                        bindInfoWindow(geoName, map, infowindow, p);
+                        storeList += genStoreList(p);
+                    }
+                    $('#storesList').html(storeList).show();
+                }
+            }
+        })
+    };
+    // binds a map marker and infoWindow together on click
+    var bindInfoWindow = function(marker, map, infowindow, p) {
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent("<div class='infoWindow'>" + p.branch_name + " </div>");
+            infowindow.open(map, marker);
+        });
+    };
+
+//    ---------------------------------
+    var strand  = new google.maps.LatLng( );
+    var strand = new google.maps.Marker({
+        position: strand
+    });
+
+//    ---------------------------------
+    function openInfoWindow(marker){
+        var gMarker = marker;
+        var center = marker;
+
+        console.log('openInfoWindow');
+        google.maps.event.trigger(gMarker, 'click', {
+            latLng: center
+        });
+    }
+
+
+
+    function genStoreList(p){
+        var distance = getDistanceFromLatLon(lat, lng, p.lat, p.lng);
+        distance = distance.toFixed(2);
+        var storeList='';
+        if(distance != 'NaN' ){  // TODO :: This is not correct way to filter, need to find a better way to filter empty array
+            var geoName = p.unique_name;
+            storeList += '<b onclick="loadAddress( \'' + p.unique_name  + '\');" >' + p.branch_name + '</b> (' + distance +  ' Mile) <br />';
+            storeList += p.address1 + ', ' + p.city + ', ' + p.postcode + '<br />';
+            storeList += 'Lat Lng >> ' + p.lat + ', ' + p.lng +  '<br />';
+            storeList += "<div class='viewOnMap' onclick='openInfoWindow(test);' > View On Map </div>";
+            storeList += "<div class='goToStore'  > <a href='/"+ p.unique_name +"'> Go To Store </a> </div>";
+            storeList += '<hr>';
+        }
+        return storeList;
+    };
+
+    function getDistanceFromLatLon(lat1,lon1,lat2,lon2) {
+        var R = 3959; // Radius of the earth in mile
+        var dLat = deg2rad(lat2-lat1);  // deg2rad below
+        var dLon = deg2rad(lon2-lon1);
+        var a =
+                Math.sin(dLat/2) * Math.sin(dLat/2) +
+                    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+                        Math.sin(dLon/2) * Math.sin(dLon/2)
+            ;
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        var d = R * c; // Distance in Mile
+//        console.log("From  " + lat1 + lon1 + ' To ' + lat2 + lon2 +  " Distance> " + d );
+        return d;
+    };
+
+    function deg2rad(deg) {
+        return deg * (Math.PI/180)
+    };
+</script>
