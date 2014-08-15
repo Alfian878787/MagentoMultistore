@@ -23,7 +23,7 @@
         height:50px;
         float: right;
     }
-    .searchBox{
+    #searchBox{
         height:31px;
         width: 200px;
         -moz-border-radius:7px;
@@ -32,7 +32,7 @@
         border:1px solid #000;
         padding:2px 27px;
     }
-    .searchButton {
+    #searchButton {
         background-color:#000;
         -moz-border-radius:7px;
         -webkit-border-radius:7px;
@@ -47,10 +47,10 @@
         text-decoration:none;
         text-shadow:0px 1px 0px #000;
     }
-    .searchButton:hover {
+    #searchButton:hover {
         background-color:#5cbf2a;
     }
-    .searchButton:active {
+    #searchButton:active {
         position:relative;
         top:1px;
     }
@@ -91,14 +91,28 @@
     .openingHours{
         width: 200px;
         float: right;
-        text-align: right;
         height: 200px;
+    }
+    .openingHoursTitle{
+        font-size: 16px;
+        font-weight: bold;
+
     }
     .details{
         width: 200px;
         float: left;
         text-align: left;
         height: 200px;
+    }
+    #nxt{
+        float: right;
+    }
+    #prv{
+        float: left;
+    }
+    #nxtPrv{
+        width:100%;
+        padding: 0 0 30px 0;
     }
     #lookingCoordinates‎{
         display: none;
@@ -107,6 +121,6 @@
 </style>
 
 
-<? include_once('indexDesktop.phtml') ?>
+<? include_once('indexMobile.phtml') ?>
 
 

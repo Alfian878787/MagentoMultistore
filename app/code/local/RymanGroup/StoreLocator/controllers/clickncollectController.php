@@ -32,12 +32,13 @@ class RymanGroup_StoreLocator_ClicknCollectController extends Mage_Core_Controll
         $data['withIn']             = $withIn           =  ($withIn)            ? $withIn           : 1000;
         $data['mile']               = $mile             =  ($mile)              ? $mile             : 'true';
         $data['startFrom']          = $startFrom        =  ($startFrom)         ? $startFrom        : 0;
-        $data['numberOfRecords']    = $numberOfRecords  =  ($numberOfRecords)   ? $numberOfRecords  : 10;
+        $data['numberOfRecords']    = $numberOfRecords  =  ($numberOfRecords)   ? $numberOfRecords  : 0;
 
         Mage::log( print_r($data, true) , null, 'storeLocator.txt');
 
         $radius = ($mile == 'true') ? 3959 : 6371;
         $filterByStore = ($storeCode == 0) ?  NULL : "WHERE store_code='$storeCode'" ;
+        $rowsFromTo = (($startFrom == 0) && ($numberOfRecords == 0)) ?  NULL : "LIMIT $startFrom , $numberOfRecords" ;
 
         $query =  "SELECT *, ( $radius
 * acos( cos( radians($centerLat) )
@@ -46,10 +47,20 @@ class RymanGroup_StoreLocator_ClicknCollectController extends Mage_Core_Controll
 * sin( radians( lat ) ) ) ) AS distance
 FROM storelocator_branch_list $filterByStore
 HAVING distance < $withIn
-ORDER BY distance
-LIMIT $startFrom , $numberOfRecords";
+ORDER BY distance $rowsFromTo";
 
 //        $query = "SELECT * FROM storelocator_branch_list WHERE store_code='1'";
+
+//        $data['oHours'][]      = array(
+//            'day'       => 'Monday',
+//            'Open'      => 600,
+//            'Close'      => 1020
+//        );
+//        $data['oHours'][]      = array(
+//            'day'       => 'Tuesday',
+//            'Open'      => 600,
+//            'Close'      => 1020
+//        );
 
         $result =  $readConnection->fetchAll($query);
         $data['query']      = $query;

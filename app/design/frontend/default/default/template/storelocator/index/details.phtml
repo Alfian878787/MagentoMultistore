@@ -9,7 +9,6 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script src="/js/storelocator/jquery.bpopup.min.js"></script>
-
 <?
 
 
@@ -18,18 +17,12 @@ $uniqueName     = $this->getRequest()->getParam('name');
 $res = $this->getStoreDetails($uniqueName);
 //echo '<pre>'; print_r($res);
 $store_details      = $res['store_details'];
-//$hours      = $res['hours'];
 $services   = $res['services'];
 $holiday    = $res['holiday'];
 $near_by    = $res['near_by'];
 $branchName = $store_details['branch_name'];
 ?>
 
-
-<head>
-    <script src="http://maps.google.com/maps/api/js?sensor=false"
-            type="text/javascript"></script>
-</head>
 <style>
     .clear{
         clear : both;
@@ -139,6 +132,19 @@ $branchName = $store_details['branch_name'];
                 <? echo ($store_details['county']) ? $store_details['county'].'<br />' : NULL ; ?>
                 <? echo ($store_details['postcode']) ? $store_details['postcode'].'<br />' : NULL ; ?>
             </div>
+            <div id="opening">
+                <h2> Opening Times </h2>
+                <?
+                if($holiday){
+                    echo "<b> Bank Holiday Hours</b> <br />";
+                    foreach ($holiday as $row){
+                        echo date( 'l dS M', strtotime($row['holiday_date'])).' :  '.$this->numToMin($row['from_']).' '.$this->numToMin($row['to_']).' '.'<br />';
+                    }// End of for each $holiday
+                    echo "<br />";  } // End if empty array?>
+
+                <?= $this->formateOpeningHopurs($store_details); ?>
+            </div>
+
             <br /><br />
             <div id="action">
                 Print This Informaion <br />
@@ -164,26 +170,6 @@ $branchName = $store_details['branch_name'];
                 }?>
                 </div><?}?>
             <br />
-                <div id="opening">
-                    <h2> Opening Times </h2>
-                    <?
-                    if($holiday){
-                        echo "<b> Bank Holiday Hours</b> <br />";
-                        foreach ($holiday as $row){
-                            echo date( 'l dS M', strtotime($row['holiday_date'])).' :  '.$this->numToMin($row['from_']).' '.$this->numToMin($row['to_']).' '.'<br />';
-                        }// End of for each $holiday
-                       echo "<br />";  } // End if empty array?>
-
-                    <?
-                        echo 'Monday  '.$this->numToMin($store_details['mon_open']).' '.$this->numToMin($store_details['mon_close']).' '.'<br />';
-                        echo 'Tuesday  '.$this->numToMin($store_details['tues_open']).' '.$this->numToMin($store_details['tues_close']).' '.'<br />';
-                        echo 'Wednesday  '.$this->numToMin($store_details['wednes_open']).' '.$this->numToMin($store_details['wednes_close']).' '.'<br />';
-                        echo 'Thursday  '.$this->numToMin($store_details['thurs_open']).' '.$this->numToMin($store_details['thurs_close']).' '.'<br />';
-                        echo 'Friday  '.$this->numToMin($store_details['fri_open']).' '.$this->numToMin($store_details['fri_close']).' '.'<br />';
-                        echo 'Saturday  '.$this->numToMin($store_details['satur_open']).' '.$this->numToMin($store_details['satur_close']).' '.'<br />';
-                        echo 'Sunday  '.$this->numToMin($store_details['sun_open']).' '.$this->numToMin($store_details['sun_close']).' '.'<br />';
-                    ?>
-                </div>
         </div>
         <div id="content">
             <div id="about_store">

@@ -2197,3 +2197,6 @@
 [05-Aug-2014 13:34:37 UTC] PHP Parse error:  syntax error, unexpected ';', expecting T_VARIABLE or '$' in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\index.phtml on line 19
 [05-Aug-2014 14:33:32 UTC] PHP Fatal error:  Call to undefined method RymanGroup_StoreLocator_ClicknCollectController::getStoreDetails() in C:\Zend\Apache2\htdocs\learning2\app\code\local\RymanGroup\StoreLocator\controllers\clickncollectController.php on line 20
 [07-Aug-2014 11:07:14 UTC] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in C:\Zend\Apache2\htdocs\learning2\app\code\local\RymanGroup\StoreLocator\controllers\IndexController.php on line 41
+[14-Aug-2014 11:43:00 UTC] PHP Parse error:  syntax error, unexpected $end in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\indexMobile.phtml on line 234
+[15-Aug-2014 11:46:54 UTC] PHP Fatal error:  Call to undefined function print_() in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 172
+[15-Aug-2014 11:47:22 UTC] PHP Fatal error:  Call to undefined function print_() in C:\Zend\Apache2\htdocs\learning2\app\design\frontend\default\default\template\storelocator\index\details.phtml on line 172

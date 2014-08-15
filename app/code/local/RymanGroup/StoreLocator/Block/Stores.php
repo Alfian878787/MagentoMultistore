@@ -168,6 +168,27 @@ storelocator_branch_list $filterByStore HAVING distance < $withIn   ORDER BY dis
         return $hour.':'.$mn.$ampm;
     }
 
+    public function formateOpeningHopurs($sDetails){
+        $oHours[0] = array('day'=> 'Monday',    'Open' => $sDetails['mon_open'],    'Close' => $sDetails['mon_close']  );
+        $oHours[1] = array('day'=> 'Tuesday',   'Open' => $sDetails['tues_open'],   'Close' => $sDetails['tues_close']  );
+        $oHours[2] = array('day'=> 'Wednesday', 'Open' => $sDetails['wednes_open'], 'Close' => $sDetails['wednes_close']  );
+        $oHours[3] = array('day'=> 'Thursday',  'Open' => $sDetails['thurs_open'],  'Close' => $sDetails['thurs_close']  );
+        $oHours[4] = array('day'=> 'Friday',    'Open' => $sDetails['fri_open'],    'Close' => $sDetails['fri_close']  );
+        $oHours[5] = array('day'=> 'Saturday',  'Open' => $sDetails['satur_open'],  'Close' => $sDetails['satur_close']  );
+        $oHours[6] = array('day'=> 'Sunday',    'Open' => $sDetails['sun_open'],    'Close' => $sDetails['sun_close']  );
+
+        $oHoursData = '<table style="width:300px">';
+        foreach ($oHours as $row){
+            $oHoursData .= '<tr>';
+            $oHoursData .= '<td>'.$row['day'].'</td>';
+            $oHoursData .= '<td>'.$this->numToMin($row['Open']).'</td>';
+            $oHoursData .= '<td>'.$this->numToMin($row['Close']).'</td>';
+            $oHoursData .= '</tr>';
+        }
+        $oHoursData .= '</table>';
+        return $oHoursData;
+    }
+
     public function logData($data, $logName='DATA', $array=TRUE){
         if($this->_testMode == FALSE) {return FALSE;}
         $log  = "\n===================Begaining of $logName ========================\n";

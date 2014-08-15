@@ -59,11 +59,11 @@ if (empty($address)){
             ?>
             <div class="store">
                 <h3> <?=$row['branch_name']?> <?/*=$row['store_code']*/?> </h3>
-                <p> <?=$row['address1'] . ', ' . $row['address2'] . ', '.$row['town'] . ', ' .$row['city'] . ', '  .$row['postcode']   ?>   </p>  <div class="viewOnMap"  > <a href="#" onclick="openInfoWindow(<?=$name?>)" > View on map </a></div>
+                <p> <?=$row['address1'] . ', ' . $row['address2'] . ', '.$row['town'] . ', ' .$row['city'] . ', '  .$row['postcode']   ?>   </p>
+                <div class="viewOnMap"  > <a href="#" onclick="openInfoWindow(<?=$name?>)" > View on map </a></div>
                 <div class="goToStore"  > <a href="/<?=$name?>">  Go to Store </a></div>
             </div>
         <?}}?>
-
 </div>
 </body>
 <script>
@@ -84,7 +84,6 @@ if (empty($address)){
     function initialize()
     {
         var mapCenter = new google.maps.LatLng(document.getElementById("lat").value, document.getElementById("lng").value  );
-        var infowindow = null;
 
         var mapProp = {
             center:mapCenter,

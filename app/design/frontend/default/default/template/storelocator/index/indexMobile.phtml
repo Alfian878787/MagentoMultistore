@@ -1,4 +1,6 @@
 <body>
+
+
 <??>
 
 <div id='content'>
@@ -7,16 +9,15 @@
         <img src='http://www.hocsinc.com/images/please-wait-ani.gif' width="300"/> <br />
     </div>
 
-<!--    <div id="lookingCordinates"> <img src="http://www.hocsinc.com/images/please-wait-ani.gif" /></div>-->
     <div id="searchArea">
         <p> Find your nearest store </p>
         <form name="input" action="<?php echo Mage::getUrl('storelocator/index/index') ?>" method='post'>
-            <input type="checkbox" name="dhl" value="Bike">&nbsp;DHL &nbsp;
-            <input type="checkbox" name="copy" value="Bike">&nbsp;Copy&nbsp;
-            <input type="checkbox" name="scan" value="Bike">&nbsp;Scan&nbsp;
-            <input type="checkbox" name="dhl2" value="Bike">&nbsp;DHL&nbsp;
-            <input type="text" name="address" class="searchBox"  placeholder="Enter Town Or Postcode">
-            <input type="submit" class="searchButton" value="SEARCH">
+<!--            <input type="checkbox" name="dhl" value="Bike">&nbsp;DHL &nbsp;-->
+<!--            <input type="checkbox" name="copy" value="Bike">&nbsp;Copy&nbsp;-->
+<!--            <input type="checkbox" name="scan" value="Bike">&nbsp;Scan&nbsp;-->
+<!--            <input type="checkbox" name="dhl2" value="Bike">&nbsp;DHL&nbsp;-->
+            <input type="text" name="address" id="searchBox" value="" placeholder="Enter Town Or Postcode">
+            <input type="submit" id="searchButton" value="SEARCH">
         </form>
     </div>
     <div id="googleMap" style="width:100%;height:400px;"></div>
@@ -28,19 +29,11 @@
         <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. </p>
     </div>
 
-<!--    --><?//if(empty($res)){
-//        echo '<h1> Could not locate any store for GU21 5ED </h1>';
-//    }else {
-//        foreach ( $res as $row){
-//            $name = $row['unique_name'];
-//            $id = $row['id'];
-//            ?>
-<!--            <div class="storesList">-->
-<!--                <h3> --><?//=$row['branch_name']?><!-- </h3>-->
-<!--                <p> --><?//=$row['address1'] . ', ' . $row['address2'] . ', '.$row['town'] . ', ' .$row['city'] . ', '  .$row['postcode']   ?><!--   </p>  <div class="viewOnMap"  > <a href="#" onclick="showMarker(--><?//=$name?><!--)" > View on map </a></div>-->
-<!--                <div class="goToStore"  > <a href="/--><?//=$name?><!--">  Go to Store </a></div>-->
-<!--            </div>-->
-<!--        --><?//}}?>
+
+    <div id="nxtPrv" >
+        <div id="prv" > Previous </div>
+        <div id="nxt" > Next </div>
+    </div>
 
     <div id="storesList">
         Store loads here ...
@@ -49,23 +42,47 @@
 
 </div>
 </body>
+<script>
+    /*
+    Search Function
+     */
+    $("#searchButton").click(function(){
+        var input = $( "#searchBox" ).val();
+        console.log (input);
+        var geocoder = new google.maps.Geocoder();
+
+        geocoder.geocode( { 'address': input}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                var lat     = results[0].geometry.location.lat(); //51.823872;
+                var lng     = results[0].geometry.location.lng(); //-3.019166;
+                var radius  = 200;
+                var start   = 0;
+                var rows    = 50;
+                var zoom    = 10;
+
+                $('#lookingCoordinates‎').hide();
+                getMapMarkers(lat, lng,  radius, start, rows, zoom);
+            }
+        });
+        return false;
+    });
+</script>
 
 <script>
-    var markers = [];
-    var lat = '';
-    var lng = '';
+
+    var mar=[];
     var map;
 
-    var infowindow =  new google.maps.InfoWindow({
-        content: ''
-    });
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-        navigator.geolocation.getCurrentPosition(fetchPlacesMobile);
-    }else{
-//        fetchPlacesDesktop();
         console.log('Looking for your Lat && lng, Please wait.');
         navigator.geolocation.getCurrentPosition(fetchPlacesMobile);
         $('#lookingCoordinates‎').show();
+    }
+    else{
+        fetchPlacesDesktop();
+//        console.log('Looking for your Lat && lng, Please wait.');
+//        navigator.geolocation.getCurrentPosition(fetchPlacesMobile);
+//        $('#lookingCoordinates‎').show();
     }
 /*
  function GetLocation(location) {
@@ -75,24 +92,42 @@
  console.log(document.getElementById('lat').value + ' ' + document.getElementById('lng').value);
  }
  */
-    function  fetchPlacesMobile(location) {
+    function  loadStores(lat, lng, start) {
         console.log("I am in fetchPlacesMobile");
-        lat = location.coords.latitude; //51.823872;
-        lng = location.coords.longitude; //-3.019166;
-        var radiusInput = 20;
+        var lat     = lat; //51.823872;
+        var lng     = lng; //-3.019166;
+        var radius  = 200;
+        var start   = start;
+        var rows    = 5;
+        var zoom    = 8;
 
         $('#lookingCoordinates‎').hide();
-        getMapMarkers(lat, lng, radiusInput );
+        getMapMarkers(lat, lng,  radius, start, rows, zoom);
+    };
+
+    function  fetchPlacesMobile(location) {
+        console.log("I am in fetchPlacesMobile");
+        var lat     = location.coords.latitude; //51.823872;
+        var lng     = location.coords.longitude; //-3.019166;
+        var radius  = 200;
+        var start   = 0;
+        var rows    = 5;
+        var zoom    = 14;
+
+        $('#lookingCoordinates‎').hide();
+        getMapMarkers(lat, lng,  radius, start, rows, zoom);
     };
 
     function  fetchPlacesDesktop() {
         console.log("I am in fetchPlacesDesktop");
-        lat =  51.5072;
-        lng = 0.1275;
-        var radiusInput = 30;
-
+        var lat     = 53.089362;
+        var lng     = -4.852386;
+        var radius  = 400;
+        var start   = 0;
+        var rows    = 0;
+        var zoom    = 6;
         $('#lookingCoordinates‎').hide();
-        getMapMarkers(lat, lng, radiusInput );
+        getMapMarkers(lat, lng,  radius, start, rows, zoom);
     };
 
     function setRadius(radiusInput){
@@ -104,14 +139,16 @@
         return 6;
     }
 
-    function getMapMarkers(lat, lng, radiusInput ) {
-        console.log("lat :: " + lat + " >> lng :: " + lng);
+//    function getMapMarkers(lat=51.5072, lng=0.1275, radius=400, start=0, rows=100, zoom=12) {
+    function getMapMarkers(lat, lng, radius, start, rows, zoom) {
+        console.log("lat :: " + lat + " >> lng :: " + lng + ' >> ' );
+        mar = [];
         var mapOptions = {
             center: new google.maps.LatLng(lat, lng),
-            zoom: setRadius(radiusInput),
-            mapTypeId: 'roadmap'
+            zoom: zoom,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
         };
-//        console.log("MapOption init Succeeded");
+
         map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
         console.log("map init Succeeded");
 
@@ -120,15 +157,14 @@
             s:  <?= Mage::app()->getStore()->getStoreId();?>,
             lat: lat,
             lng: lng,
-            w: radiusInput,
+            w: radius,
             m: true,
-            start: '0',
-            rows: '20',
+            start: start,
+            rows: rows,
             ajax: '1'
         };
         console.log("dataUrl :: " + dataUrl );
-        var storeList ='';
-        var markersOnMap = '';
+        var storeList = '';
         jQuery.ajax({
             url : dataUrl,
             dataType : 'json',
@@ -138,53 +174,55 @@
                 console.log("Success StoreData :: " + response.status );
                 if (response.status == 'OK') {
                     var places = response.places;
-                    console.log("Total records :: " + response.numberOfRecords);
+                    console.log("Total records :: " + response.records);
                     // loop through places and add markers
+                    var s =0;
+//                    var bound = new google.maps.LatLngBounds();
                     for (s in places) {
                         var p = places[s];
-                        var geoName = p.unique_name;
-                        //create gmap latlng obj
-                        tmpLatLng = new google.maps.LatLng( p.lat, p.lng);
-//                        console.log("lat :: " +  p.lat + " >> lng :: " +  p.lng + ' :: ' + p.unique_name);
-                        // make and place map maker.
-                        eval ( "geoName = new google.maps.Marker({ map: map, position: tmpLatLng }); " ) ;
-
-                        bindInfoWindow(geoName, map, infowindow, p);
-                        storeList += genStoreList(p);
+//                        bound.extend( new google.maps.LatLng(p.lat, p.lng) );
+                        var infoData = getInfoData(p);
+                        genMarkers(p.lat, p.lng, infoData, p.map_zoom_list_page);
+                        storeList += genStoreList(p, s, lat, lng);
                     }
                     $('#storesList').html(storeList).show();
+                    var firstElement =  parseInt(start) -  5;   // parseInt(response.records);
+                    var lastElement =  parseInt(start) + 5;     // parseInt(response.records);
+//                    var tempLat = tempLng = 2;
+//                    map.setCenter(new google.maps.LatLng(bound.getCenter()));
+                    $('#prv').html('<a href="#" onclick="loadStores(\'' + lat + '\' , \'' + lng + '\',  \'' +  firstElement + '\');" > Previous </a> ');
+                    $('#nxt').html('<a href="#" onclick="loadStores(\'' + lat + '\' , \'' + lng + '\',  \'' + lastElement + '\');" > Next </a> ');
                 }
             }
         })
     };
-    // binds a map marker and infoWindow together on click
-    var bindInfoWindow = function(marker, map, infowindow, p) {
-        google.maps.event.addListener(marker, 'click', function() {
-            infowindow.setContent("<div class='infoWindow'>" + p.branch_name + " </div>");
-            infowindow.open(map, marker);
+
+    function genMarkers(lat, lng, infoData, zoom){
+        var mark =  new google.maps.Marker({ map: map, position:  new google.maps.LatLng( lat, lng) });
+
+        mark['infowindow'] =  new google.maps.InfoWindow({ content: infoData });
+        mark['zoom'] =   parseInt(zoom);
+
+        google.maps.event.addListener(mark, 'click', function() {
+            closeInfoWindows();
+            map.setZoom(mark['zoom']);
+            mark['infowindow'].open(map, mark);
         });
-    };
-
-//    ---------------------------------
-    var strand  = new google.maps.LatLng( );
-    var strand = new google.maps.Marker({
-        position: strand
-    });
-
-//    ---------------------------------
-    function openInfoWindow(marker){
-        var gMarker = marker;
-        var center = marker;
-
-        console.log('openInfoWindow');
-        google.maps.event.trigger(gMarker, 'click', {
-            latLng: center
-        });
+        mar.push(mark);
     }
 
 
+    function gotoMarker(myPoint){
+        closeInfoWindows();
+        window.scrollTo(0, 110);  // Scroll to Map
+        var zoom =mar[myPoint]['zoom'];
+        map.setZoom(zoom);  // Set Map Zoom
+        console.log(myPoint + ' >> ' +  mar[myPoint].position.lat() + ' >> ' + mar[myPoint].position.lng() + ' zoom>> ' + zoom);
+        map.setCenter(new google.maps.LatLng(mar[myPoint].position.lat(), mar[myPoint].position.lng()));
+        mar[myPoint]['infowindow'].open(map, mar[myPoint]);
+    }
 
-    function genStoreList(p){
+    function genStoreList(p, s, lat, lng){
         var distance = getDistanceFromLatLon(lat, lng, p.lat, p.lng);
         distance = distance.toFixed(2);
         var storeList='';
@@ -192,13 +230,80 @@
             var geoName = p.unique_name;
             storeList += '<b onclick="loadAddress( \'' + p.unique_name  + '\');" >' + p.branch_name + '</b> (' + distance +  ' Mile) <br />';
             storeList += p.address1 + ', ' + p.city + ', ' + p.postcode + '<br />';
-            storeList += 'Lat Lng >> ' + p.lat + ', ' + p.lng +  '<br />';
-            storeList += "<div class='viewOnMap' onclick='openInfoWindow(test);' > View On Map </div>";
-            storeList += "<div class='goToStore'  > <a href='/"+ p.unique_name +"'> Go To Store </a> </div>";
+//            storeList += 'Lat Lng >> ' + p.lat + ', ' + p.lng +  '<br />';
+            storeList += '<div class="viewOnMap" onClick="gotoMarker( \'' + s + '\');"  > View On Map </div>';
+            storeList += "<div class='goToStore'  > <a href='/"+ p.unique_name +"\'> Go To Store </a> </div>";
             storeList += '<hr>';
+//            console.log(p.unique_name);
         }
         return storeList;
     };
+
+
+    /// Lazy Functions ....  //////////////////
+    function getInfoData(p){
+        var name = p.unique_name;
+        var branch_name = p.branch_name;
+        var phone                          = p.phone;
+        var address                        = p.address1 + ', <br /> ' + p.city + '<br /> ' + p. postcode;
+        var url                            = '/'+name;
+        var viewDetails                    = '<a href="'+ url + '"> View Details </a>';
+
+        var openingHours = "<div class=\'openingHoursTitle\'> Opening Hours </div>";
+
+        openingHours += formateOpeningHopurs(p);
+
+
+        var details = "<h1>"+ branch_name +"</h1>";
+        details += "<p>" + address + "</p>";
+        details += "<p>" + phone + "</p>";
+        details += "<p>" + viewDetails + "</p>";
+
+        var infoWindow = "<div class=\'infoWindow\'> ";
+        infoWindow += "<div class=\'details\'>" +  details + "  </div>";
+        infoWindow += "<div class=\'openingHours\'> " + openingHours + "</div>";
+        infoWindow += "</div>";
+        return infoWindow;
+    }
+
+    function formateOpeningHopurs(p){
+        var oHours = new Object();
+        oHours[0] = {"day" : "Monday",      "Open" : p.mon_open,    "Close" : p.mon_close};
+        oHours[1] = {"day" : "Tuesday",     "Open" : p.tues_open,   "Close" : p.tues_close};
+        oHours[2] = {"day" : "Wednusday",   "Open" : p.wednes_open, "Close" : p.wednes_close};
+        oHours[3] = {"day" : "Thursday",    "Open" : p.thurs_open,  "Close" : p.thurs_close};
+        oHours[4] = {"day" : "Friday",      "Open" : p.fri_open,    "Close" : p.fri_close};
+        oHours[5] = {"day" : "Saturday",    "Open" : p.satur_open,  "Close" : p.satur_open};
+        oHours[6] = {"day" : "Sunday",      "Open" : p.sun_open,    "Close" : p.sun_close};
+
+        var oHoursData = '<table style="width:200px">';
+        for (s in oHours) {
+            oHoursData += '<tr>';
+            oHoursData += '<td>'+ oHours[s].day +'</td>';
+            oHoursData += '<td>'+ minToHour(oHours[s].Open) +'</td>';
+            oHoursData += '<td>'+ minToHour(oHours[s].Close) +'</td>';
+            oHoursData += '</tr>';
+        }
+        oHoursData += '</table>';
+        return oHoursData;
+    }
+    function closeInfoWindows(){
+        for (var i=0; i<mar.length; i++) {
+            mar[i]['infowindow'].close();
+        }  // Close all infoWindows
+    }
+
+    function minToHour(min){
+        var mn = min%60;
+        var hour   = (min - mn )/60;
+        var ampm   = (hour < 12 ) ? 'AM'      : 'PM';
+        hour   = (hour < 12 ) ? hour     : hour-12;
+        hour   = (hour < 10 ) ? '0'+hour : hour;
+        mn     = (mn < 10 )   ? '0'+mn   : mn;
+        return hour+':'+mn+ampm;
+    }
+
+
 
     function getDistanceFromLatLon(lat1,lon1,lat2,lon2) {
         var R = 3959; // Radius of the earth in mile
@@ -218,4 +323,6 @@
     function deg2rad(deg) {
         return deg * (Math.PI/180)
     };
+
+//    google.maps.event.addDomListener(window, 'load', fetchPlacesDesktop);
 </script>
